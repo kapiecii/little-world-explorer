@@ -1,0 +1,392 @@
+[
+  {
+    "id": "tree",
+    "category": "english",
+    "subCategory": "object",
+    "en": "Tree",
+    "ja": "木",
+    "icon": "🌳",
+    "levels": {
+      "1": "Tree!",
+      "2": "Big Green Tree!",
+      "3": "Look at the big green tree!"
+    }
+  },
+  {
+    "id": "apple",
+    "category": "english",
+    "subCategory": "object",
+    "en": "Apple",
+    "ja": "リンゴ",
+    "icon": "🍎",
+    "levels": {
+      "1": "Apple!",
+      "2": "Red Apple!",
+      "3": "Find a red apple!"
+    }
+  },
+  {
+    "id": "flower",
+    "category": "english",
+    "subCategory": "object",
+    "en": "Flower",
+    "ja": "花",
+    "icon": "🌸",
+    "levels": {
+      "1": "Flower!",
+      "2": "Pretty Flower!",
+      "3": "You found a pretty flower!"
+    }
+  },
+  {
+    "id": "cat",
+    "category": "english",
+    "subCategory": "animal",
+    "en": "Cat",
+    "ja": "猫",
+    "icon": "🐱",
+    "levels": {
+      "1": "Cat!",
+      "2": "Small Cat!",
+      "3": "The cute cat says Meow!"
+    }
+  },
+  {
+    "id": "cow",
+    "category": "english",
+    "subCategory": "animal",
+    "en": "Cow",
+    "ja": "牛",
+    "icon": "🐮",
+    "levels": {
+      "1": "Cow!",
+      "2": "Big Cow!",
+      "3": "The big cow eats grass!"
+    }
+  },
+  {
+    "id": "dog",
+    "category": "english",
+    "subCategory": "animal",
+    "en": "Dog",
+    "ja": "犬",
+    "icon": "🐶",
+    "levels": {
+      "1": "Dog!",
+      "2": "Happy Dog!",
+      "3": "Find a friendly dog!"
+    }
+  },
+  {
+    "id": "sheep",
+    "category": "english",
+    "subCategory": "animal",
+    "en": "Sheep",
+    "ja": "羊",
+    "icon": "🐑",
+    "levels": {
+      "1": "Sheep!",
+      "2": "White Sheep!",
+      "3": "Look at the fluffy white sheep!"
+    }
+  },
+  {
+    "id": "chicken",
+    "category": "english",
+    "subCategory": "animal",
+    "en": "Chicken",
+    "ja": "鶏",
+    "icon": "🐔",
+    "levels": {
+      "1": "Chicken!",
+      "2": "Yellow Chicken!",
+      "3": "The small chicken is walking!"
+    }
+  },
+  {
+    "id": "fish",
+    "category": "english",
+    "subCategory": "animal",
+    "en": "Fish",
+    "ja": "魚",
+    "icon": "🐟",
+    "levels": {
+      "1": "Fish!",
+      "2": "Blue Fish!",
+      "3": "The fish swims in the river!"
+    }
+  },
+  {
+    "id": "walk",
+    "category": "english",
+    "subCategory": "action",
+    "en": "Walk",
+    "ja": "歩く",
+    "icon": "🚶",
+    "levels": {
+      "1": "Walk!",
+      "2": "Walk forward!",
+      "3": "Let's walk around the island!"
+    }
+  },
+  {
+    "id": "jump",
+    "category": "english",
+    "subCategory": "action",
+    "en": "Jump",
+    "ja": "跳ぶ",
+    "icon": "🦘",
+    "levels": {
+      "1": "Jump!",
+      "2": "High Jump!",
+      "3": "Jump up high in the sky!"
+    }
+  },
+  {
+    "id": "run",
+    "category": "english",
+    "subCategory": "action",
+    "en": "Run",
+    "ja": "走る",
+    "icon": "🏃",
+    "levels": {
+      "1": "Run!",
+      "2": "Run fast!",
+      "3": "Let's run fast across the grass!"
+    }
+  },
+  {
+    "id": "big",
+    "category": "english",
+    "subCategory": "state",
+    "en": "Big",
+    "ja": "大きい",
+    "icon": "🐘",
+    "levels": {
+      "1": "Big!",
+      "2": "Very Big!",
+      "3": "This is a very big object!"
+    }
+  },
+  {
+    "id": "small",
+    "category": "english",
+    "subCategory": "state",
+    "en": "Small",
+    "ja": "小さい",
+    "icon": "🐣",
+    "levels": {
+      "1": "Small!",
+      "2": "So Small!",
+      "3": "Look at this cute small thing!"
+    }
+  },
+  {
+    "id": "red",
+    "category": "color_shape",
+    "subCategory": "color",
+    "en": "Red",
+    "ja": "赤",
+    "icon": "🟥",
+    "levels": {
+      "1": "Red!",
+      "2": "Red Block!",
+      "3": "Find something bright red!"
+    }
+  },
+  {
+    "id": "blue",
+    "category": "color_shape",
+    "subCategory": "color",
+    "en": "Blue",
+    "ja": "青",
+    "icon": "🟦",
+    "levels": {
+      "1": "Blue!",
+      "2": "Blue Block!",
+      "3": "Blue like the clear sky!"
+    }
+  },
+  {
+    "id": "yellow",
+    "category": "color_shape",
+    "subCategory": "color",
+    "en": "Yellow",
+    "ja": "黄色",
+    "icon": "🟨",
+    "levels": {
+      "1": "Yellow!",
+      "2": "Yellow Block!",
+      "3": "Bright yellow like the sun!"
+    }
+  },
+  {
+    "id": "green",
+    "category": "color_shape",
+    "subCategory": "color",
+    "en": "Green",
+    "ja": "緑",
+    "icon": "🟩",
+    "levels": {
+      "1": "Green!",
+      "2": "Green Block!",
+      "3": "Green like fresh grass and leaves!"
+    }
+  },
+  {
+    "id": "under",
+    "category": "spatial",
+    "subCategory": "position",
+    "en": "Under",
+    "ja": "下",
+    "icon": "⬇️",
+    "levels": {
+      "1": "Under!",
+      "2": "Under the table!",
+      "3": "You put the block under the table!"
+    }
+  },
+  {
+    "id": "on",
+    "category": "spatial",
+    "subCategory": "position",
+    "en": "On",
+    "ja": "上",
+    "icon": "⬆️",
+    "levels": {
+      "1": "On!",
+      "2": "On the table!",
+      "3": "Great! The block is on the table!"
+    }
+  },
+  {
+    "id": "up",
+    "category": "spatial",
+    "subCategory": "position",
+    "en": "Up",
+    "ja": "上へ",
+    "icon": "🔼",
+    "levels": {
+      "1": "Up!",
+      "2": "Stack it up!",
+      "3": "Stack the blocks up high!"
+    }
+  },
+  {
+    "id": "wood",
+    "category": "english",
+    "subCategory": "material",
+    "en": "Wood",
+    "ja": "木材",
+    "icon": "🪵",
+    "levels": {
+      "1": "Wood!",
+      "2": "Brown Wood!",
+      "3": "Use wood to build a house or bridge!"
+    }
+  },
+  {
+    "id": "stone",
+    "category": "english",
+    "subCategory": "material",
+    "en": "Stone",
+    "ja": "石",
+    "icon": "🪨",
+    "levels": {
+      "1": "Stone!",
+      "2": "Gray Stone!",
+      "3": "Stone is strong and heavy!"
+    }
+  },
+  {
+    "id": "seed",
+    "category": "science",
+    "subCategory": "nature",
+    "en": "Seed",
+    "ja": "種",
+    "icon": "🌱",
+    "levels": {
+      "1": "Seed!",
+      "2": "Plant a seed!",
+      "3": "Plant the seed in the garden!"
+    }
+  },
+  {
+    "id": "sprout",
+    "category": "science",
+    "subCategory": "nature",
+    "en": "Sprout",
+    "ja": "芽",
+    "icon": "🌿",
+    "levels": {
+      "1": "Sprout!",
+      "2": "Little Sprout!",
+      "3": "The seed grew into a green sprout!"
+    }
+  },
+  {
+    "id": "water",
+    "category": "science",
+    "subCategory": "nature",
+    "en": "Water",
+    "ja": "水",
+    "icon": "💧",
+    "levels": {
+      "1": "Water!",
+      "2": "Cool Water!",
+      "3": "Give water to help plants grow!"
+    }
+  },
+  {
+    "id": "cube",
+    "category": "color_shape",
+    "subCategory": "shape",
+    "en": "Cube",
+    "ja": "立方体",
+    "icon": "🧊",
+    "levels": {
+      "1": "Cube!",
+      "2": "Blue Cube!",
+      "3": "A cube has six square sides!"
+    }
+  },
+  {
+    "id": "sphere",
+    "category": "color_shape",
+    "subCategory": "shape",
+    "en": "Sphere",
+    "ja": "球",
+    "icon": "🔮",
+    "levels": {
+      "1": "Sphere!",
+      "2": "Round Sphere!",
+      "3": "A sphere is round like a ball!"
+    }
+  },
+  {
+    "id": "cylinder",
+    "category": "color_shape",
+    "subCategory": "shape",
+    "en": "Cylinder",
+    "ja": "円柱",
+    "icon": "🛢️",
+    "levels": {
+      "1": "Cylinder!",
+      "2": "Tall Cylinder!",
+      "3": "Look at the tall orange cylinder!"
+    }
+  },
+  {
+    "id": "triangle",
+    "category": "color_shape",
+    "subCategory": "shape",
+    "en": "Triangle",
+    "ja": "三角形",
+    "icon": "🔺",
+    "levels": {
+      "1": "Triangle!",
+      "2": "Yellow Triangle!",
+      "3": "A triangle has three corners!"
+    }
+  }
+]

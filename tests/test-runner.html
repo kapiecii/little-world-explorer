@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Little World Explorer - Browser Test Suite</title>
+  <style>
+    body {
+      font-family: system-ui, -apple-system, sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      padding: 32px;
+    }
+    h1 { color: #38bdf8; }
+    .pass { color: #4ade80; margin: 6px 0; }
+    .fail { color: #f87171; font-weight: bold; margin: 6px 0; }
+    #summary {
+      margin-top: 20px;
+      padding: 16px;
+      border-radius: 12px;
+      font-size: 1.2rem;
+      font-weight: bold;
+    }
+    .all-pass { background: rgba(34, 197, 94, 0.2); border: 2px solid #4ade80; }
+    .has-fail { background: rgba(239, 68, 68, 0.2); border: 2px solid #f87171; }
+  </style>
+</head>
+<body>
+  <h1>🧪 Little World Explorer — Test Runner</h1>
+  <div id="results"></div>
+  <div id="summary">Running tests...</div>
+
+  <script type="module">
+    import { runInventoryTests } from './inventory.test.js';
+    import { runLearningTests } from './learning.test.js';
+    import { runSaveTests } from './save.test.js';
+
+    const resultsEl = document.getElementById('results');
+    const summaryEl = document.getElementById('summary');
+    let passed = 0;
+    let failed = 0;
+
+    function assert(condition, message) {
+      const div = document.createElement('div');
+      if (condition) {
+        passed++;
+        div.className = 'pass';
+        div.textContent = `✅ PASS: ${message}`;
+      } else {
+        failed++;
+        div.className = 'fail';
+        div.textContent = `❌ FAIL: ${message}`;
+      }
+      resultsEl.appendChild(div);
+    }
+
+    async function runAll() {
+      try {
+        await runInventoryTests(assert);
+        await runLearningTests(assert);
+        await runSaveTests(assert);
+      } catch (err) {
+        assert(false, `Unhandled exception: ${err.message}`);
+      }
+
+      summaryEl.textContent = `Total: ${passed + failed} | Passed: ${passed} | Failed: ${failed}`;
+      summaryEl.className = failed === 0 ? 'all-pass' : 'has-fail';
+      window.__TEST_RESULTS__ = { passed, failed };
+    }
+
+    runAll();
+  </script>
+</body>
+</html>

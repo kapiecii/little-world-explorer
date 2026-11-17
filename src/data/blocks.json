@@ -1,0 +1,314 @@
+[
+  {
+    "id": "grass",
+    "category": "terrain",
+    "name": { "en": "Grass", "ja": "草ブロック" },
+    "color": "#58b847",
+    "topColor": "#6fd158",
+    "sideColor": "#8b6343",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "grass",
+    "icon": "🟩",
+    "audio": { "name": "grass" },
+    "learning": {
+      "english": true,
+      "color": "green",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape"]
+    }
+  },
+  {
+    "id": "dirt",
+    "category": "terrain",
+    "name": { "en": "Dirt", "ja": "土ブロック" },
+    "color": "#8b5a3c",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "dirt",
+    "icon": "🟫",
+    "audio": { "name": "dirt" },
+    "learning": {
+      "english": true,
+      "color": "brown",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape"]
+    }
+  },
+  {
+    "id": "sand",
+    "category": "terrain",
+    "name": { "en": "Sand", "ja": "砂ブロック" },
+    "color": "#f2d680",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "sand",
+    "icon": "🟨",
+    "audio": { "name": "sand" },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape", "science"]
+    }
+  },
+  {
+    "id": "stone",
+    "category": "nature",
+    "name": { "en": "Stone", "ja": "石ブロック" },
+    "color": "#9099a2",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "stone",
+    "icon": "🪨",
+    "audio": { "name": "stone" },
+    "learning": {
+      "english": true,
+      "color": "gray",
+      "shape": "cube",
+      "countable": true,
+      "sinkInWater": true,
+      "category": ["english", "math", "science"]
+    }
+  },
+  {
+    "id": "water",
+    "category": "nature",
+    "name": { "en": "Water", "ja": "水" },
+    "color": "#38a3f8",
+    "opacity": 0.72,
+    "transparent": true,
+    "shape": "cube",
+    "solid": false,
+    "breakable": false,
+    "dropItem": "water",
+    "icon": "💧",
+    "audio": { "name": "water" },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "shape": "cube",
+      "countable": false,
+      "category": ["english", "science"]
+    }
+  },
+  {
+    "id": "wood",
+    "category": "nature",
+    "name": { "en": "Wood", "ja": "木（木材）" },
+    "color": "#9c6635",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "wood",
+    "icon": "🪵",
+    "audio": { "name": "wood" },
+    "learning": {
+      "english": true,
+      "color": "brown",
+      "shape": "cube",
+      "countable": true,
+      "floatInWater": true,
+      "category": ["english", "math", "science"]
+    }
+  },
+  {
+    "id": "leaves",
+    "category": "nature",
+    "name": { "en": "Leaves", "ja": "葉っぱ" },
+    "color": "#3ca342",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "leaves",
+    "icon": "🍃",
+    "audio": { "name": "leaves" },
+    "learning": {
+      "english": true,
+      "color": "green",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "science"]
+    }
+  },
+  {
+    "id": "red",
+    "category": "color",
+    "name": { "en": "Red Block", "ja": "赤いブロック" },
+    "color": "#ff4b4b",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "red",
+    "icon": "🟥",
+    "audio": { "name": "red_block" },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape", "math", "spatial"]
+    }
+  },
+  {
+    "id": "blue",
+    "category": "color",
+    "name": { "en": "Blue Block", "ja": "青いブロック" },
+    "color": "#3b82f6",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "blue",
+    "icon": "🟦",
+    "audio": { "name": "blue_block" },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape", "math", "spatial"]
+    }
+  },
+  {
+    "id": "yellow",
+    "category": "color",
+    "name": { "en": "Yellow Block", "ja": "黄色いブロック" },
+    "color": "#facc15",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "yellow",
+    "icon": "🟨",
+    "audio": { "name": "yellow_block" },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape", "math", "spatial"]
+    }
+  },
+  {
+    "id": "green",
+    "category": "color",
+    "name": { "en": "Green Block", "ja": "緑のブロック" },
+    "color": "#22c55e",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "green",
+    "icon": "🟩",
+    "audio": { "name": "green_block" },
+    "learning": {
+      "english": true,
+      "color": "green",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape", "math", "spatial"]
+    }
+  },
+  {
+    "id": "white",
+    "category": "building",
+    "name": { "en": "White Block", "ja": "白いブロック" },
+    "color": "#f8fafc",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "white",
+    "icon": "⬜",
+    "audio": { "name": "white_block" },
+    "learning": {
+      "english": true,
+      "color": "white",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape", "spatial"]
+    }
+  },
+  {
+    "id": "gray",
+    "category": "building",
+    "name": { "en": "Gray Block", "ja": "灰色のブロック" },
+    "color": "#64748b",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "gray",
+    "icon": "⬛",
+    "audio": { "name": "gray_block" },
+    "learning": {
+      "english": true,
+      "color": "gray",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape", "spatial"]
+    }
+  },
+  {
+    "id": "brown",
+    "category": "building",
+    "name": { "en": "Brown Block", "ja": "茶色のブロック" },
+    "color": "#78350f",
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "brown",
+    "icon": "🟫",
+    "audio": { "name": "brown_block" },
+    "learning": {
+      "english": true,
+      "color": "brown",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape", "spatial"]
+    }
+  },
+  {
+    "id": "flower",
+    "category": "decoration",
+    "name": { "en": "Flower", "ja": "花" },
+    "color": "#f43f5e",
+    "shape": "flower",
+    "solid": false,
+    "breakable": true,
+    "dropItem": "flower",
+    "icon": "🌸",
+    "audio": { "name": "flower" },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "shape": "circle",
+      "countable": true,
+      "category": ["english", "color_shape", "science", "math"]
+    }
+  },
+  {
+    "id": "glass",
+    "category": "decoration",
+    "name": { "en": "Glass", "ja": "ガラス" },
+    "color": "#bae6fd",
+    "opacity": 0.45,
+    "transparent": true,
+    "shape": "cube",
+    "solid": true,
+    "breakable": true,
+    "dropItem": "glass",
+    "icon": "🧊",
+    "audio": { "name": "glass" },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "shape": "cube",
+      "countable": true,
+      "category": ["english", "color_shape", "science"]
+    }
+  }
+]

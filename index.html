@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Little World Explorer</title>
+  <link rel="stylesheet" href="./src/styles/main.css" />
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.module.js"
+      }
+    }
+  </script>
+</head>
+<body>
+  <!-- 3D WebGL Canvas Container -->
+  <div id="game-canvas-container"></div>
+
+  <!-- SCR-001: Title Screen -->
+  <section id="title-screen" aria-label="Title Screen">
+    <div class="title-card">
+      <div class="title-logo-badges">🌳 🍎 🐶 🧱</div>
+      <h1 class="title-heading">Little World Explorer</h1>
+      <p class="title-subtitle">Explore, Build &amp; Learn English in 3D!</p>
+
+      <div class="title-buttons">
+        <button id="btn-start-game" type="button" class="btn-large btn-start">
+          <span>🚀</span>
+          <span>Start Game</span>
+        </button>
+        <button id="btn-continue-game" type="button" class="btn-large btn-continue hidden">
+          <span>🌈</span>
+          <span>Continue</span>
+        </button>
+        <button id="btn-title-settings" type="button" class="btn-large btn-settings">
+          <span>⚙️</span>
+          <span>Settings</span>
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- SCR-002: Main Game HUD -->
+  <section id="hud-screen" class="hidden" aria-label="Game HUD">
+    <!-- Top-Left: Mission Info & Mission/WordBook Buttons -->
+    <div id="hud-top-left" class="hud-interactive">
+      <div id="mission-hud-card">
+        <div class="mission-hud-row">
+          <span id="mission-hud-icon">🍎</span>
+          <div class="mission-hud-texts">
+            <div id="mission-hud-title">Find 3 apples!</div>
+            <div id="mission-hud-sub">Easy Mission</div>
+          </div>
+          <button id="mission-speak-btn" type="button" class="btn-pill" title="Listen to Mission">🔊</button>
+        </div>
+
+        <div class="mission-progress-bar">
+          <div id="mission-progress-fill"></div>
+          <span id="mission-progress-text">0 / 3</span>
+        </div>
+
+        <div class="mission-hud-buttons">
+          <button id="mission-pause-btn" type="button" class="btn-pill">⏸️ Pause</button>
+          <button id="open-missions-btn" type="button" class="btn-pill">📋 Missions</button>
+          <button id="open-wordbook-btn" type="button" class="btn-pill">📖 Words</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Top-Center: English / Japanese Word Display + Pronunciation Button -->
+    <div id="hud-top-center" class="hud-interactive">
+      <div id="word-banner" class="hidden">
+        <span id="word-banner-icon">🍎</span>
+        <div class="word-banner-content">
+          <div id="word-banner-text">APPLE</div>
+          <div id="word-banner-sub">Apple!</div>
+        </div>
+        <button id="word-speak-btn" type="button" title="Play Pronunciation">🔊</button>
+      </div>
+    </div>
+
+    <!-- Top-Right: Quick Language Switch & Settings Button -->
+    <div id="hud-top-right" class="hud-interactive">
+      <button id="quick-lang-btn" type="button" class="btn-top-icon" title="Switch English / Japanese">
+        🌐 English Only
+      </button>
+      <button id="open-settings-btn" type="button" class="btn-top-icon" title="Settings (Esc)">
+        ⚙️ Settings
+      </button>
+    </div>
+
+    <!-- Center: Hold-to-break progress indicator -->
+    <div id="break-progress-ring" class="hidden"></div>
+
+    <!-- Celebration Banner on Mission Complete -->
+    <div id="mission-celebration" class="hidden">
+      <span id="mission-celebration-text">🎉 GREAT JOB! ⭐</span>
+    </div>
+
+    <!-- Bottom-Center: 9-Slot Inventory Bar (SCR-005) -->
+    <div id="hud-bottom-center" class="hud-interactive">
+      <div id="inventory-bar" role="toolbar" aria-label="Inventory Slots"></div>
+    </div>
+
+    <!-- Bottom-Right: Simple Visual Controls Guide -->
+    <div id="controls-guide">
+      <div class="guide-row"><span class="guide-key">W A S D</span> <span>🚶 Walk / Move</span></div>
+      <div class="guide-row"><span class="guide-key">Shift</span> <span>🏃 Run Fast</span></div>
+      <div class="guide-row"><span class="guide-key">Space</span> <span>🦘 Jump!</span></div>
+      <div class="guide-row"><span class="guide-key">Left Click</span> <span>👆 Speak / Collect</span></div>
+      <div class="guide-row"><span class="guide-key">Hold Left</span> <span>⛏️ Break Block / Tree</span></div>
+      <div class="guide-row"><span class="guide-key">Right Click</span> <span>🧱 Place Block</span></div>
+      <div class="guide-row"><span class="guide-key">1-9 / Wheel</span> <span>🎒 Item Slot</span></div>
+    </div>
+
+    <!-- Save Status Toast -->
+    <div id="save-indicator">💾 Saved!</div>
+  </section>
+
+  <!-- SCR-003: Settings Modal -->
+  <div id="settings-modal" class="modal-backdrop hidden" role="dialog" aria-label="Settings">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h2 class="modal-title">⚙️ Settings / せってい</h2>
+        <button id="close-settings-btn" type="button" class="btn-close" title="Close">✕</button>
+      </div>
+
+      <div class="settings-list">
+        <div class="setting-row">
+          <span class="setting-label">🌐 Language (表示言語)</span>
+          <div class="setting-controls">
+            <button id="set-lang-en" type="button" class="btn-option active">English</button>
+            <button id="set-lang-ja" type="button" class="btn-option">英語＋日本語</button>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-label">🗣️ Voice (英語音声)</span>
+          <div class="setting-controls">
+            <button id="set-voice-toggle" type="button" class="btn-option active">🔊 ON</button>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-label">🎙️ English Voice (英語の声)</span>
+          <div class="setting-controls">
+            <select id="set-voice-select" class="voice-select">
+              <option value="">Auto (Native English)</option>
+            </select>
+            <button id="set-voice-test-btn" type="button" class="btn-option">🔊 Test</button>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-label">🎚️ Voice Volume (音量)</span>
+          <div class="setting-controls">
+            <input id="set-voice-volume" type="range" min="0" max="100" value="80" />
+            <span id="set-voice-volume-val">80%</span>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-label">🎵 BGM (音楽)</span>
+          <div class="setting-controls">
+            <button id="set-bgm-toggle" type="button" class="btn-option active">🎵 ON</button>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-label">🔔 Sound Effects (効果音)</span>
+          <div class="setting-controls">
+            <button id="set-sfx-toggle" type="button" class="btn-option active">🔔 ON</button>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-label">📚 Learning Level (英語レベル)</span>
+          <div class="setting-controls">
+            <button id="set-level-1" type="button" class="btn-option active">Level 1 (Word)</button>
+            <button id="set-level-2" type="button" class="btn-option">Level 2 (Phrase)</button>
+            <button id="set-level-3" type="button" class="btn-option">Level 3 (Sentence)</button>
+          </div>
+        </div>
+
+        <div class="setting-row">
+          <span class="setting-label">🏠 Title Menu</span>
+          <div class="setting-controls">
+            <button id="back-to-title-btn" type="button" class="btn-option">Back to Title</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- SCR-004 & SCR-006: Missions & Discovered WordBook Modal -->
+  <div id="mission-modal" class="modal-backdrop hidden" role="dialog" aria-label="Missions and Word Book">
+    <div class="modal-panel">
+      <div class="modal-header">
+        <h2 class="modal-title">🌟 Explorer Book</h2>
+        <button id="close-mission-modal-btn" type="button" class="btn-close" title="Close">✕</button>
+      </div>
+
+      <div class="modal-tabs">
+        <button id="tab-missions-btn" type="button" class="tab-btn active">📋 Missions (ミッション)</button>
+        <button id="tab-wordbook-btn" type="button" class="tab-btn">📖 Word Book (見つけた英語)</button>
+      </div>
+
+      <div id="mission-list-container" class="mission-list"></div>
+      <div id="wordbook-list-container" class="wordbook-grid hidden"></div>
+    </div>
+  </div>
+
+  <script type="module" src="./src/main.js"></script>
+</body>
+</html>

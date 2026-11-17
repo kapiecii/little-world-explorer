@@ -1,0 +1,191 @@
+[
+  {
+    "id": "find_apples_001",
+    "category": "english",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🍎",
+    "instruction": {
+      "en": "Find 3 apples!",
+      "ja": "リンゴを3個見つけよう！"
+    },
+    "audio": "Find three apples!",
+    "objective": {
+      "type": "collect",
+      "target": "apple",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_dog_001",
+    "category": "english",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🐶",
+    "instruction": {
+      "en": "Find a dog!",
+      "ja": "イヌを見つけてクリックしよう！"
+    },
+    "audio": "Find a dog!",
+    "objective": {
+      "type": "select",
+      "target": "dog",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_red_flower_001",
+    "category": "color_shape",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🌹",
+    "instruction": {
+      "en": "Find a red flower!",
+      "ja": "赤い花を見つけよう！"
+    },
+    "audio": "Find a red flower!",
+    "objective": {
+      "type": "select",
+      "target": "flower_red",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "stack_three_blocks_001",
+    "category": "math",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🧱",
+    "instruction": {
+      "en": "Stack 3 blocks high!",
+      "ja": "ブロックを3つ積み上げよう！"
+    },
+    "audio": "Stack three blocks high!",
+    "objective": {
+      "type": "stack",
+      "target": "any",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "collect_stones_001",
+    "category": "math",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🪨",
+    "instruction": {
+      "en": "Collect 5 stones!",
+      "ja": "石ブロックを5個集めよう！"
+    },
+    "audio": "Collect five stones!",
+    "objective": {
+      "type": "collect",
+      "target": "stone",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_cube_001",
+    "category": "color_shape",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🧊",
+    "instruction": {
+      "en": "Find a cube!",
+      "ja": "立方体（キューブ）を見つけよう！"
+    },
+    "audio": "Find a blue cube!",
+    "objective": {
+      "type": "select",
+      "target": "shape_cube",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "plant_seed_001",
+    "category": "science",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🌱",
+    "instruction": {
+      "en": "Plant a seed in the garden!",
+      "ja": "畑に種（タネ）を植えよう！"
+    },
+    "audio": "Plant a seed in the garden!",
+    "objective": {
+      "type": "plant",
+      "target": "farm_plot",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "put_block_on_table_001",
+    "category": "spatial",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🪑",
+    "instruction": {
+      "en": "Put the block ON the table!",
+      "ja": "テーブルの上（ON）にブロックを置こう！"
+    },
+    "audio": "Put the block on the table!",
+    "objective": {
+      "type": "spatial_place",
+      "target": "on_table",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "build_bridge_001",
+    "category": "logic",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🌉",
+    "instruction": {
+      "en": "Build a bridge over the river!",
+      "ja": "川の上にブロックを3つ置いて橋を作ろう！"
+    },
+    "audio": "Build a bridge over the river!",
+    "objective": {
+      "type": "bridge",
+      "target": "river",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  }
+]

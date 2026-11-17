@@ -1,0 +1,433 @@
+[
+  {
+    "id": "apple",
+    "type": "food",
+    "name": { "en": "Apple", "ja": "リンゴ" },
+    "icon": "🍎",
+    "color": "#ef4444",
+    "audio": {
+      "name": "Apple",
+      "level1": "Apple!",
+      "level2": "Red Apple!",
+      "level3": "This is a sweet red apple!"
+    },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "shape": "sphere",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "math", "color_shape"]
+    },
+    "interactions": ["observe", "collect"]
+  },
+  {
+    "id": "tree",
+    "type": "nature",
+    "name": { "en": "Tree", "ja": "木" },
+    "icon": "🌳",
+    "color": "#22c55e",
+    "audio": {
+      "name": "Tree",
+      "level1": "Tree!",
+      "level2": "Big Green Tree!",
+      "level3": "Look at the big green tree!"
+    },
+    "learning": {
+      "english": true,
+      "color": "green",
+      "shape": "cylinder",
+      "size": "big",
+      "countable": true,
+      "categories": ["english", "science"]
+    },
+    "interactions": ["observe", "harvest"],
+    "dropItem": "wood"
+  },
+  {
+    "id": "flower_red",
+    "type": "nature",
+    "name": { "en": "Red Flower", "ja": "赤い花" },
+    "icon": "🌹",
+    "color": "#f43f5e",
+    "audio": {
+      "name": "Flower",
+      "level1": "Flower!",
+      "level2": "Red Flower!",
+      "level3": "You found a pretty red flower!"
+    },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "shape": "circle",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "color_shape", "math", "science"]
+    },
+    "interactions": ["observe", "collect"],
+    "collectId": "flower"
+  },
+  {
+    "id": "flower_yellow",
+    "type": "nature",
+    "name": { "en": "Yellow Flower", "ja": "黄色い花" },
+    "icon": "🌻",
+    "color": "#facc15",
+    "audio": {
+      "name": "Yellow Flower",
+      "level1": "Flower!",
+      "level2": "Yellow Flower!",
+      "level3": "Look at the bright yellow flower!"
+    },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "shape": "circle",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "color_shape", "math", "science"]
+    },
+    "interactions": ["observe", "collect"],
+    "collectId": "flower"
+  },
+  {
+    "id": "flower_blue",
+    "type": "nature",
+    "name": { "en": "Blue Flower", "ja": "青い花" },
+    "icon": "💠",
+    "color": "#38bdf8",
+    "audio": {
+      "name": "Blue Flower",
+      "level1": "Flower!",
+      "level2": "Blue Flower!",
+      "level3": "A lovely blue flower is blooming!"
+    },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "shape": "circle",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "color_shape", "math", "science"]
+    },
+    "interactions": ["observe", "collect"],
+    "collectId": "flower"
+  },
+  {
+    "id": "mushroom",
+    "type": "nature",
+    "name": { "en": "Mushroom", "ja": "キノコ" },
+    "icon": "🍄",
+    "color": "#fb7185",
+    "audio": {
+      "name": "Mushroom",
+      "level1": "Mushroom!",
+      "level2": "Small Mushroom!",
+      "level3": "A mushroom grows in the forest!"
+    },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "shape": "circle",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "science", "math"]
+    },
+    "interactions": ["observe", "collect"]
+  },
+  {
+    "id": "seed_item",
+    "type": "nature",
+    "name": { "en": "Seed", "ja": "種（タネ）" },
+    "icon": "🌱",
+    "color": "#84cc16",
+    "audio": {
+      "name": "Seed",
+      "level1": "Seed!",
+      "level2": "Small Seed!",
+      "level3": "Plant a seed to make a flower grow!"
+    },
+    "learning": {
+      "english": true,
+      "color": "green",
+      "shape": "sphere",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "science"]
+    },
+    "interactions": ["observe", "collect"],
+    "collectId": "seed"
+  },
+  {
+    "id": "farm_plot",
+    "type": "science",
+    "name": { "en": "Garden Plot", "ja": "畑" },
+    "icon": "🪴",
+    "color": "#78350f",
+    "audio": {
+      "name": "Garden",
+      "level1": "Garden!",
+      "level2": "Plant a seed!",
+      "level3": "Plant a seed and give it water to grow!"
+    },
+    "learning": {
+      "english": true,
+      "color": "brown",
+      "shape": "square",
+      "countable": false,
+      "categories": ["science", "english", "logic"]
+    },
+    "interactions": ["observe", "plant", "water"]
+  },
+  {
+    "id": "cow",
+    "type": "animal",
+    "name": { "en": "Cow", "ja": "ウシ" },
+    "icon": "🐮",
+    "color": "#f8fafc",
+    "audio": {
+      "name": "Cow",
+      "level1": "Cow!",
+      "level2": "Big Cow! Moo!",
+      "level3": "The big cow says Moo!"
+    },
+    "learning": {
+      "english": true,
+      "color": "white",
+      "size": "big",
+      "countable": true,
+      "categories": ["english", "science"]
+    },
+    "interactions": ["observe", "pet"]
+  },
+  {
+    "id": "sheep",
+    "type": "animal",
+    "name": { "en": "Sheep", "ja": "ヒツジ" },
+    "icon": "🐑",
+    "color": "#f1f5f9",
+    "audio": {
+      "name": "Sheep",
+      "level1": "Sheep!",
+      "level2": "White Sheep! Baa!",
+      "level3": "The fluffy white sheep says Baa!"
+    },
+    "learning": {
+      "english": true,
+      "color": "white",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "science"]
+    },
+    "interactions": ["observe", "pet"]
+  },
+  {
+    "id": "chicken",
+    "type": "animal",
+    "name": { "en": "Chicken", "ja": "ニワトリ" },
+    "icon": "🐔",
+    "color": "#fef08a",
+    "audio": {
+      "name": "Chicken",
+      "level1": "Chicken!",
+      "level2": "Small Chicken!",
+      "level3": "The small chicken walks around!"
+    },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "science"]
+    },
+    "interactions": ["observe", "pet"]
+  },
+  {
+    "id": "dog",
+    "type": "animal",
+    "name": { "en": "Dog", "ja": "イヌ" },
+    "icon": "🐶",
+    "color": "#d97706",
+    "audio": {
+      "name": "Dog",
+      "level1": "Dog!",
+      "level2": "Friendly Dog! Woof!",
+      "level3": "The happy dog wags its tail! Woof!"
+    },
+    "learning": {
+      "english": true,
+      "color": "brown",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "science"]
+    },
+    "interactions": ["observe", "pet"]
+  },
+  {
+    "id": "cat",
+    "type": "animal",
+    "name": { "en": "Cat", "ja": "ネコ" },
+    "icon": "🐱",
+    "color": "#fb923c",
+    "audio": {
+      "name": "Cat",
+      "level1": "Cat!",
+      "level2": "Cute Cat! Meow!",
+      "level3": "The orange cat says Meow!"
+    },
+    "learning": {
+      "english": true,
+      "color": "orange",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "science"]
+    },
+    "interactions": ["observe", "pet"]
+  },
+  {
+    "id": "fish",
+    "type": "animal",
+    "name": { "en": "Fish", "ja": "サカナ" },
+    "icon": "🐟",
+    "color": "#38bdf8",
+    "audio": {
+      "name": "Fish",
+      "level1": "Fish!",
+      "level2": "Blue Fish!",
+      "level3": "The fish swims in the water!"
+    },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "size": "small",
+      "countable": true,
+      "categories": ["english", "science", "spatial"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "shape_sphere",
+    "type": "shape_object",
+    "name": { "en": "Sphere", "ja": "球（スフィア）" },
+    "icon": "🔮",
+    "color": "#a855f7",
+    "audio": {
+      "name": "Sphere",
+      "level1": "Sphere!",
+      "level2": "Purple Sphere!",
+      "level3": "A sphere is round like a ball!"
+    },
+    "learning": {
+      "english": true,
+      "color": "purple",
+      "shape": "sphere",
+      "countable": true,
+      "categories": ["color_shape", "english"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "shape_cylinder",
+    "type": "shape_object",
+    "name": { "en": "Cylinder", "ja": "円柱（シリンダー）" },
+    "icon": "🛢️",
+    "color": "#f97316",
+    "audio": {
+      "name": "Cylinder",
+      "level1": "Cylinder!",
+      "level2": "Orange Cylinder!",
+      "level3": "This orange pillar is a cylinder!"
+    },
+    "learning": {
+      "english": true,
+      "color": "orange",
+      "shape": "cylinder",
+      "countable": true,
+      "categories": ["color_shape", "english"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "shape_triangle",
+    "type": "shape_object",
+    "name": { "en": "Triangle", "ja": "三角（トライアングル）" },
+    "icon": "🔺",
+    "color": "#eab308",
+    "audio": {
+      "name": "Triangle",
+      "level1": "Triangle!",
+      "level2": "Yellow Triangle!",
+      "level3": "A triangle has three corners!"
+    },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "shape": "triangle",
+      "countable": true,
+      "categories": ["color_shape", "english", "math"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "shape_cube",
+    "type": "shape_object",
+    "name": { "en": "Cube", "ja": "立方体（キューブ）" },
+    "icon": "🧊",
+    "color": "#3b82f6",
+    "audio": {
+      "name": "Cube",
+      "level1": "Cube!",
+      "level2": "Blue Cube!",
+      "level3": "This box shape is called a cube!"
+    },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "shape": "cube",
+      "countable": true,
+      "categories": ["color_shape", "english", "spatial"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "table_box",
+    "type": "spatial_object",
+    "name": { "en": "Table", "ja": "テーブル" },
+    "icon": "🪑",
+    "color": "#b45309",
+    "audio": {
+      "name": "Table",
+      "level1": "Table!",
+      "level2": "Wooden Table!",
+      "level3": "Put a block ON or UNDER the table!"
+    },
+    "learning": {
+      "english": true,
+      "color": "brown",
+      "shape": "square",
+      "spatial": ["on", "under"],
+      "categories": ["spatial", "english"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "star",
+    "type": "decoration",
+    "name": { "en": "Star Trophy", "ja": "スター（ごほうび）" },
+    "icon": "⭐",
+    "color": "#fde047",
+    "audio": {
+      "name": "Star",
+      "level1": "Star!",
+      "level2": "Shining Star!",
+      "level3": "Great job! You got a shining star!"
+    },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "countable": true,
+      "categories": ["english"]
+    },
+    "interactions": ["observe", "collect"]
+  }
+]
