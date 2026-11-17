@@ -58,6 +58,7 @@ export class PlayerController {
           this.keys.right = true;
           break;
         case 'Space':
+          e.preventDefault();
           this.keys.jump = true;
           break;
         case 'ShiftLeft':

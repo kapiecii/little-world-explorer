@@ -22,7 +22,13 @@ export class UIManager {
     this.onUIModalStateChange = onUIModalStateChange;
 
     this.hud = new HUD(eventBus, inventoryManager, learningManager, initialSettings);
-    this.missionUI = new MissionUI(eventBus, missionManager, vocabularyManager, initialSettings);
+    this.missionUI = new MissionUI(
+      eventBus,
+      missionManager,
+      vocabularyManager,
+      initialSettings,
+      () => this.closeMissionModal()
+    );
     this.settingsUI = new SettingsUI(eventBus, saveManager, initialSettings);
 
     this.titleScreenEl = document.getElementById('title-screen');
@@ -172,6 +178,9 @@ export class UIManager {
 
   _notifyModalState() {
     const gameplayActive = this.inGame && !this.isAnyModalOpen();
+    if (gameplayActive && document.activeElement && typeof document.activeElement.blur === 'function') {
+      document.activeElement.blur();
+    }
     if (this.onUIModalStateChange) {
       this.onUIModalStateChange(gameplayActive);
     }

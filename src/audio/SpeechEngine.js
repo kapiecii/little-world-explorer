@@ -4,10 +4,10 @@ const EXCLUDED_VOICE_PATTERN =
   /kyoko|otoya|hattori|o-ren|oren|japanese|日本語|albert|bad news|bahh|bells|boing|bubbles|cellos|deranged|good news|hysterical|jester|organ|princess|ralph|superstar|trinoids|whisper|wobble|zarvox|fred|junior|kathy/i;
 
 const TIER1_VOICE_PATTERN =
-  /google us english|samantha|ava|allison|microsoft aria|microsoft jenny|microsoft ana|microsoft guy|alex|victoria/i;
+  /google us english|samantha|ava|allison|microsoft aria|microsoft jenny|microsoft ana|microsoft guy|microsoft zira|microsoft david|microsoft mark|alex|victoria/i;
 
 const TIER2_VOICE_PATTERN =
-  /google uk english|karen|daniel|moira|tessa|serena|zira|david|mark|flo|sandy|shelley|reed/i;
+  /google uk english|microsoft hazel|microsoft george|microsoft susan|microsoft catherine|microsoft james|microsoft linda|microsoft richard|karen|daniel|moira|tessa|serena|flo|sandy|shelley|reed/i;
 
 export class SpeechEngine {
   constructor() {

@@ -2,11 +2,12 @@ import { LearningEvents } from '../learning/LearningEvents.js';
 import { AudioPriority } from '../audio/AudioManager.js';
 
 export class MissionUI {
-  constructor(eventBus, missionManager, vocabularyManager, settings = {}) {
+  constructor(eventBus, missionManager, vocabularyManager, settings = {}, onRequestCloseModal = null) {
     this.eventBus = eventBus;
     this.missionManager = missionManager;
     this.vocabularyManager = vocabularyManager;
     this.language = settings.language || 'en';
+    this.onRequestCloseModal = onRequestCloseModal;
 
     this.hudCardEl = document.getElementById('mission-hud-card');
     this.hudIconEl = document.getElementById('mission-hud-icon');
@@ -201,13 +202,21 @@ export class MissionUI {
         actionBtn.textContent = this.language === 'ja' ? '🔄 もういちど' : '🔄 Play Again';
         actionBtn.addEventListener('click', () => {
           this.missionManager.startMission(m.id, true);
-          this.modalEl?.classList.add('hidden');
+          if (this.onRequestCloseModal) {
+            this.onRequestCloseModal();
+          } else {
+            this.modalEl?.classList.add('hidden');
+          }
         });
       } else {
         actionBtn.textContent = this.language === 'ja' ? '▶️ はじめる' : '▶️ Start';
         actionBtn.addEventListener('click', () => {
           this.missionManager.startMission(m.id, false);
-          this.modalEl?.classList.add('hidden');
+          if (this.onRequestCloseModal) {
+            this.onRequestCloseModal();
+          } else {
+            this.modalEl?.classList.add('hidden');
+          }
         });
       }
 
