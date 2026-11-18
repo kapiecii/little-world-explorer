@@ -62,12 +62,19 @@ export class LearningManager {
       });
 
       this.missionManager.recordAction('select', id, 1);
+      if (['cow', 'sheep', 'chicken', 'dog', 'cat', 'fish'].includes(id)) {
+        this.missionManager.recordAction('select_animal', 'any', 1);
+      }
+      if (id.startsWith('shape_')) {
+        this.missionManager.recordAction('select_shape', 'any', 1);
+      }
     });
 
     // 3. Player jumped
     this.eventBus.on(LearningEvents.PLAYER_JUMPED, () => {
       this.vocabularyManager.markDiscovered('jump');
       this.eventBus.emit(LearningEvents.SFX_REQUESTED, { type: 'jump' });
+      this.missionManager.recordAction('jump', 'any', 1);
     });
 
     // 4. Item collected
@@ -98,6 +105,7 @@ export class LearningManager {
     this.eventBus.on(LearningEvents.BLOCK_PLACED, ({ blockId, stackHeight, spatialRelation, isRiverBridge }) => {
       this.vocabularyManager.markDiscovered(blockId);
       this.eventBus.emit(LearningEvents.SFX_REQUESTED, { type: 'place' });
+      this.missionManager.recordAction('place', blockId, 1);
 
       if (spatialRelation === 'on_table') {
         this.vocabularyManager.markDiscovered('on');
@@ -116,6 +124,7 @@ export class LearningManager {
           priority: AudioPriority.HIGH,
           force: true
         });
+        this.missionManager.recordAction('spatial_place', 'under_table', 1);
       } else if (isRiverBridge) {
         this.missionManager.recordAction('bridge', 'river', 1);
         this.eventBus.emit(LearningEvents.SPEAK_REQUESTED, {
@@ -175,6 +184,7 @@ export class LearningManager {
         priority: AudioPriority.HIGH,
         force: true
       });
+      this.missionManager.recordAction('grow', 'any', 1);
     });
 
     // 8. Mission started / completed

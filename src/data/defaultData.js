@@ -1518,6 +1518,153 @@ export const DEFAULT_MISSIONS = [
     }
   },
   {
+    "id": "find_cat_001",
+    "category": "english",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🐱",
+    "instruction": {
+      "en": "Find a cat in the forest!",
+      "ja": "森にいるネコを見つけよう！"
+    },
+    "audio": "Find a cat in the forest!",
+    "objective": {
+      "type": "select",
+      "target": "cat",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_cow_001",
+    "category": "english",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🐮",
+    "instruction": {
+      "en": "Find a big cow!",
+      "ja": "大きなウシを見つけよう！"
+    },
+    "audio": "Find a big cow!",
+    "objective": {
+      "type": "select",
+      "target": "cow",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_sheep_001",
+    "category": "english",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🐑",
+    "instruction": {
+      "en": "Find a white sheep!",
+      "ja": "白いヒツジを見つけよう！"
+    },
+    "audio": "Find a white sheep!",
+    "objective": {
+      "type": "select",
+      "target": "sheep",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_chicken_001",
+    "category": "english",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🐔",
+    "instruction": {
+      "en": "Find a small chicken!",
+      "ja": "小さなニワトリを見つけよう！"
+    },
+    "audio": "Find a small chicken!",
+    "objective": {
+      "type": "select",
+      "target": "chicken",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_fish_001",
+    "category": "english",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🐟",
+    "instruction": {
+      "en": "Find a fish in the river!",
+      "ja": "川を泳ぐサカナを見つけよう！"
+    },
+    "audio": "Find a fish in the river!",
+    "objective": {
+      "type": "select",
+      "target": "fish",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "meet_three_animals_001",
+    "category": "english",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🐾",
+    "instruction": {
+      "en": "Say hello to 3 animals!",
+      "ja": "動物を3匹見つけてクリックしよう！"
+    },
+    "audio": "Say hello to three animals!",
+    "objective": {
+      "type": "select_animal",
+      "target": "any",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "jump_five_times_001",
+    "category": "english",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🦘",
+    "instruction": {
+      "en": "Jump 5 times!",
+      "ja": "Spaceキーで5回ジャンプしよう！"
+    },
+    "audio": "Jump five times!",
+    "objective": {
+      "type": "jump",
+      "target": "any",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
     "id": "find_red_flower_001",
     "category": "color_shape",
     "difficulty": 1,
@@ -1532,6 +1679,195 @@ export const DEFAULT_MISSIONS = [
       "type": "select",
       "target": "flower_red",
       "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_yellow_flower_001",
+    "category": "color_shape",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🌻",
+    "instruction": {
+      "en": "Find a yellow flower!",
+      "ja": "黄色い花を見つけよう！"
+    },
+    "audio": "Find a yellow flower!",
+    "objective": {
+      "type": "select",
+      "target": "flower_yellow",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_blue_flower_001",
+    "category": "color_shape",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "💠",
+    "instruction": {
+      "en": "Find a blue flower!",
+      "ja": "青い花を見つけよう！"
+    },
+    "audio": "Find a blue flower!",
+    "objective": {
+      "type": "select",
+      "target": "flower_blue",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "collect_three_flowers_001",
+    "category": "math",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🌸",
+    "instruction": {
+      "en": "Collect 3 flowers!",
+      "ja": "花を3つ集めよう！"
+    },
+    "audio": "Collect three flowers!",
+    "objective": {
+      "type": "collect",
+      "target": "flower",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_cube_001",
+    "category": "color_shape",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🧊",
+    "instruction": {
+      "en": "Find a blue cube!",
+      "ja": "青い立方体（キューブ）を見つけよう！"
+    },
+    "audio": "Find a blue cube!",
+    "objective": {
+      "type": "select",
+      "target": "shape_cube",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_sphere_001",
+    "category": "color_shape",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🔮",
+    "instruction": {
+      "en": "Find a purple sphere!",
+      "ja": "紫の球（スフィア）を見つけよう！"
+    },
+    "audio": "Find a purple sphere!",
+    "objective": {
+      "type": "select",
+      "target": "shape_sphere",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_cylinder_001",
+    "category": "color_shape",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🛢️",
+    "instruction": {
+      "en": "Find an orange cylinder!",
+      "ja": "オレンジの円柱（シリンダー）を見つけよう！"
+    },
+    "audio": "Find an orange cylinder!",
+    "objective": {
+      "type": "select",
+      "target": "shape_cylinder",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_triangle_001",
+    "category": "color_shape",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🔺",
+    "instruction": {
+      "en": "Find a yellow triangle!",
+      "ja": "黄色い三角（トライアングル）を見つけよう！"
+    },
+    "audio": "Find a yellow triangle!",
+    "objective": {
+      "type": "select",
+      "target": "shape_triangle",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "place_blue_blocks_001",
+    "category": "color_shape",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🟦",
+    "instruction": {
+      "en": "Place 3 blue blocks!",
+      "ja": "青いブロックを3個置こう！"
+    },
+    "audio": "Place three blue blocks!",
+    "objective": {
+      "type": "place",
+      "target": "blue",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "place_red_blocks_001",
+    "category": "color_shape",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🟥",
+    "instruction": {
+      "en": "Place 3 red blocks!",
+      "ja": "赤いブロックを3個置こう！"
+    },
+    "audio": "Place three red blocks!",
+    "objective": {
+      "type": "place",
+      "target": "red",
+      "count": 3
     },
     "reward": {
       "type": "decoration",
@@ -1560,6 +1896,27 @@ export const DEFAULT_MISSIONS = [
     }
   },
   {
+    "id": "stack_five_blocks_001",
+    "category": "math",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🗼",
+    "instruction": {
+      "en": "Build a tower 5 blocks high!",
+      "ja": "ブロックを5段高く積み上げよう！"
+    },
+    "audio": "Build a tower five blocks high!",
+    "objective": {
+      "type": "stack",
+      "target": "any",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
     "id": "collect_stones_001",
     "category": "math",
     "difficulty": 2,
@@ -1581,20 +1938,41 @@ export const DEFAULT_MISSIONS = [
     }
   },
   {
-    "id": "find_cube_001",
-    "category": "color_shape",
-    "difficulty": 1,
-    "difficultyLabel": "Easy",
-    "icon": "🧊",
+    "id": "collect_mushrooms_001",
+    "category": "science",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🍄",
     "instruction": {
-      "en": "Find a cube!",
-      "ja": "立方体（キューブ）を見つけよう！"
+      "en": "Collect 3 mushrooms in the forest!",
+      "ja": "森でキノコを3個集めよう！"
     },
-    "audio": "Find a blue cube!",
+    "audio": "Collect three mushrooms in the forest!",
     "objective": {
-      "type": "select",
-      "target": "shape_cube",
-      "count": 1
+      "type": "collect",
+      "target": "mushroom",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "collect_wood_001",
+    "category": "science",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🪵",
+    "instruction": {
+      "en": "Harvest 4 wood blocks from trees!",
+      "ja": "木を長押しで壊して木材を4個集めよう！"
+    },
+    "audio": "Harvest four wood blocks from trees!",
+    "objective": {
+      "type": "collect",
+      "target": "wood",
+      "count": 4
     },
     "reward": {
       "type": "decoration",
@@ -1623,6 +2001,27 @@ export const DEFAULT_MISSIONS = [
     }
   },
   {
+    "id": "grow_plant_001",
+    "category": "science",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🌿",
+    "instruction": {
+      "en": "Water and grow a plant 2 times!",
+      "ja": "畑の植物をクリックして2段階育てよう！"
+    },
+    "audio": "Water and grow a plant in the garden!",
+    "objective": {
+      "type": "grow",
+      "target": "any",
+      "count": 2
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
     "id": "put_block_on_table_001",
     "category": "spatial",
     "difficulty": 3,
@@ -1636,6 +2035,27 @@ export const DEFAULT_MISSIONS = [
     "objective": {
       "type": "spatial_place",
       "target": "on_table",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "put_block_under_table_001",
+    "category": "spatial",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "⬇️",
+    "instruction": {
+      "en": "Put the block UNDER the table!",
+      "ja": "テーブルの下（UNDER）にブロックを置こう！"
+    },
+    "audio": "Put the block under the table!",
+    "objective": {
+      "type": "spatial_place",
+      "target": "under_table",
       "count": 1
     },
     "reward": {
@@ -1658,6 +2078,27 @@ export const DEFAULT_MISSIONS = [
       "type": "bridge",
       "target": "river",
       "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "build_wood_house_001",
+    "category": "logic",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🏠",
+    "instruction": {
+      "en": "Build with 6 wood blocks!",
+      "ja": "木材ブロックを6個配置してお家を作ろう！"
+    },
+    "audio": "Build with six wood blocks!",
+    "objective": {
+      "type": "place",
+      "target": "wood",
+      "count": 6
     },
     "reward": {
       "type": "decoration",
