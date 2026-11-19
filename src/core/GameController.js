@@ -118,6 +118,7 @@ export class GameController {
       initialSettings,
       onStartNewGame: () => this.startNewGame(),
       onContinueGame: () => this.continueGame(),
+      onResetWorldObjects: () => this.resetWorldObjects(),
       onUIModalStateChange: (gameplayActive) => this._setGameplayActive(gameplayActive)
     });
 
@@ -238,6 +239,19 @@ export class GameController {
       priority: AudioPriority.HIGH,
       force: true
     });
+  }
+
+  async resetWorldObjects() {
+    if (!this.worldManager) return false;
+    this.worldManager.resetObjects();
+    await this.saveManager.triggerSave('reset_objects');
+    this.eventBus.emit(LearningEvents.SFX_REQUESTED, { type: 'collect' });
+    this.eventBus.emit(LearningEvents.SPEAK_REQUESTED, {
+      text: 'World objects are back!',
+      priority: AudioPriority.HIGH,
+      force: true
+    });
+    return true;
   }
 
   getFullSaveState() {

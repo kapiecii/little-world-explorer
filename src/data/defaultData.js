@@ -2104,5 +2104,425 @@ export const DEFAULT_MISSIONS = [
       "type": "decoration",
       "itemId": "star"
     }
+  },
+  {
+    "id": "find_tree_001",
+    "category": "english",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🌳",
+    "instruction": {
+      "en": "Find a big green tree!",
+      "ja": "大きな緑の木を見つけよう！"
+    },
+    "audio": "Find a big green tree!",
+    "objective": {
+      "type": "select",
+      "target": "tree",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "run_fast_001",
+    "category": "english",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🏃",
+    "instruction": {
+      "en": "Run fast with Shift!",
+      "ja": "Shiftキーを押しながら3秒走ろう！"
+    },
+    "audio": "Run fast with Shift!",
+    "objective": {
+      "type": "run",
+      "target": "any",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "listen_five_words_001",
+    "category": "english",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🔊",
+    "instruction": {
+      "en": "Click and listen to 5 things!",
+      "ja": "いろんな物を5回クリックして英語を聞こう！"
+    },
+    "audio": "Click and listen to five things!",
+    "objective": {
+      "type": "select",
+      "target": "any",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "place_yellow_blocks_001",
+    "category": "color_shape",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🟨",
+    "instruction": {
+      "en": "Place 3 yellow blocks!",
+      "ja": "黄色いブロックを3個置こう！"
+    },
+    "audio": "Place three yellow blocks!",
+    "objective": {
+      "type": "place",
+      "target": "yellow",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_all_shapes_001",
+    "category": "color_shape",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🔷",
+    "instruction": {
+      "en": "Find 4 shapes in the plaza!",
+      "ja": "広場で4つの形（図形）をクリックしよう！"
+    },
+    "audio": "Find four shapes in the plaza!",
+    "objective": {
+      "type": "select_shape",
+      "target": "any",
+      "count": 4
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "place_colorful_blocks_001",
+    "category": "color_shape",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🌈",
+    "instruction": {
+      "en": "Place 5 colorful blocks!",
+      "ja": "カラフルな色ブロックを5個置こう！"
+    },
+    "audio": "Place five colorful blocks!",
+    "objective": {
+      "type": "place_color",
+      "target": "any",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "break_three_blocks_001",
+    "category": "math",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "⛏️",
+    "instruction": {
+      "en": "Break 3 blocks!",
+      "ja": "ブロックを長押しで3個こわそう！"
+    },
+    "audio": "Break three blocks!",
+    "objective": {
+      "type": "break",
+      "target": "any",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "break_two_stones_001",
+    "category": "math",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🪨",
+    "instruction": {
+      "en": "Remove 2 stone blocks!",
+      "ja": "石ブロックを2個取り除こう！"
+    },
+    "audio": "Remove two stone blocks!",
+    "objective": {
+      "type": "break",
+      "target": "stone",
+      "count": 2
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "jump_ten_times_001",
+    "category": "math",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🔢",
+    "instruction": {
+      "en": "Count and jump 10 times!",
+      "ja": "数えながら10回ジャンプしよう！"
+    },
+    "audio": "Count and jump ten times!",
+    "objective": {
+      "type": "jump",
+      "target": "any",
+      "count": 10
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "place_ten_blocks_001",
+    "category": "math",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🏗️",
+    "instruction": {
+      "en": "Count to 10: place 10 blocks!",
+      "ja": "10まで数えよう！ブロックを10個置こう！"
+    },
+    "audio": "Count to ten! Place ten blocks!",
+    "objective": {
+      "type": "place",
+      "target": "any",
+      "count": 10
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_river_water_001",
+    "category": "science",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "💧",
+    "instruction": {
+      "en": "Find the blue river!",
+      "ja": "青い川の水を見つけてクリックしよう！"
+    },
+    "audio": "Find the blue river!",
+    "objective": {
+      "type": "select",
+      "target": "water",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_sandy_beach_001",
+    "category": "science",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🏖️",
+    "instruction": {
+      "en": "Find the sandy beach!",
+      "ja": "砂浜の砂ブロックを見つけよう！"
+    },
+    "audio": "Find the sandy beach!",
+    "objective": {
+      "type": "select",
+      "target": "sand",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "plant_three_seeds_001",
+    "category": "science",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🪴",
+    "instruction": {
+      "en": "Plant 3 seeds in the garden!",
+      "ja": "畑に種（タネ）を3つ植えよう！"
+    },
+    "audio": "Plant three seeds in the garden!",
+    "objective": {
+      "type": "plant",
+      "target": "farm_plot",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "bloom_flower_001",
+    "category": "science",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🌺",
+    "instruction": {
+      "en": "Grow a flower to full bloom!",
+      "ja": "畑の植物に水をあげて花を咲かせよう！"
+    },
+    "audio": "Grow a flower to full bloom!",
+    "objective": {
+      "type": "grow",
+      "target": "flower",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "find_table_001",
+    "category": "spatial",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🪑",
+    "instruction": {
+      "en": "Find the wooden table!",
+      "ja": "建築エリアの木製テーブルを見つけよう！"
+    },
+    "audio": "Find the wooden table!",
+    "objective": {
+      "type": "select",
+      "target": "table_box",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "put_two_blocks_on_table_001",
+    "category": "spatial",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "⬆️",
+    "instruction": {
+      "en": "Put 2 blocks ON the table!",
+      "ja": "テーブルの上（ON）にブロックを2個置こう！"
+    },
+    "audio": "Put two blocks on the table!",
+    "objective": {
+      "type": "spatial_place",
+      "target": "on_table",
+      "count": 2
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "plant_garden_flowers_001",
+    "category": "spatial",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🌸",
+    "instruction": {
+      "en": "Place 3 flowers around the island!",
+      "ja": "島に花を3つ飾ろう！"
+    },
+    "audio": "Place three flowers around the island!",
+    "objective": {
+      "type": "place",
+      "target": "flower",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "build_stone_wall_001",
+    "category": "logic",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🏰",
+    "instruction": {
+      "en": "Build a wall with 5 stone blocks!",
+      "ja": "石ブロックを5個並べて壁を作ろう！"
+    },
+    "audio": "Build a wall with five stone blocks!",
+    "objective": {
+      "type": "place",
+      "target": "stone",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "build_animal_fence_001",
+    "category": "logic",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🐄",
+    "instruction": {
+      "en": "Build a fence in the animal area!",
+      "ja": "動物エリアにブロックを6個置いて柵を作ろう！"
+    },
+    "audio": "Build a fence in the animal area!",
+    "objective": {
+      "type": "build_fence",
+      "target": "animal_area",
+      "count": 6
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "build_wide_bridge_001",
+    "category": "logic",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🌉",
+    "instruction": {
+      "en": "Build a wide bridge (6 blocks)!",
+      "ja": "川の上にブロックを6個置いて大きな橋を作ろう！"
+    },
+    "audio": "Build a wide bridge over the river!",
+    "objective": {
+      "type": "bridge",
+      "target": "river",
+      "count": 6
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
   }
 ];

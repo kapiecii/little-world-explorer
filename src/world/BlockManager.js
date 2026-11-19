@@ -142,13 +142,16 @@ export class BlockManager {
       }
     }
 
+    const isAnimalArea = bx >= 36 && bz >= 32;
+
     if (this.eventBus) {
       this.eventBus.emit(LearningEvents.BLOCK_PLACED, {
         blockId,
         position: [bx, by, bz],
         stackHeight,
         spatialRelation,
-        isRiverBridge: Boolean(wasRiverWater && by <= 3)
+        isRiverBridge: Boolean(wasRiverWater && by <= 3),
+        isAnimalArea
       });
     }
 

@@ -1,6 +1,16 @@
 import { LearningEvents } from '../learning/LearningEvents.js';
 import { AudioPriority } from '../audio/AudioManager.js';
 
+const MISSION_CATEGORIES = [
+  { id: 'all', icon: '🌟', en: 'All', ja: 'すべて' },
+  { id: 'english', icon: '🗣️', en: 'English', ja: '英語' },
+  { id: 'color_shape', icon: '🎨', en: 'Color & Shape', ja: '色・形' },
+  { id: 'math', icon: '🔢', en: 'Math', ja: '算数' },
+  { id: 'science', icon: '🌱', en: 'Science', ja: '自然' },
+  { id: 'spatial', icon: '🧭', en: 'Spatial', ja: '空間' },
+  { id: 'logic', icon: '🧩', en: 'Logic', ja: '論理' }
+];
+
 export class MissionUI {
   constructor(eventBus, missionManager, vocabularyManager, settings = {}, onRequestCloseModal = null) {
     this.eventBus = eventBus;
@@ -8,6 +18,7 @@ export class MissionUI {
     this.vocabularyManager = vocabularyManager;
     this.language = settings.language || 'en';
     this.onRequestCloseModal = onRequestCloseModal;
+    this.selectedCategory = 'all';
 
     this.hudCardEl = document.getElementById('mission-hud-card');
     this.hudIconEl = document.getElementById('mission-hud-icon');
@@ -22,6 +33,7 @@ export class MissionUI {
 
     this.modalEl = document.getElementById('mission-modal');
     this.closeModalBtn = document.getElementById('close-mission-modal-btn');
+    this.filterBarEl = document.getElementById('mission-filter-bar');
     this.missionListContainer = document.getElementById('mission-list-container');
     this.wordBookContainer = document.getElementById('wordbook-list-container');
     this.tabMissionsBtn = document.getElementById('tab-missions-btn');
@@ -104,12 +116,14 @@ export class MissionUI {
     if (tab === 'wordbook') {
       this.tabWordBookBtn?.classList.add('active');
       this.tabMissionsBtn?.classList.remove('active');
+      this.filterBarEl?.classList.add('hidden');
       this.wordBookContainer.classList.remove('hidden');
       this.missionListContainer.classList.add('hidden');
       this.renderWordBook();
     } else {
       this.tabMissionsBtn?.classList.add('active');
       this.tabWordBookBtn?.classList.remove('active');
+      this.filterBarEl?.classList.remove('hidden');
       this.missionListContainer.classList.remove('hidden');
       this.wordBookContainer.classList.add('hidden');
       this.renderMissionList();
@@ -163,9 +177,38 @@ export class MissionUI {
     this.renderWordBook();
   }
 
+  renderCategoryFilters() {
+    if (!this.filterBarEl || !this.missionManager) return;
+    const allMissions = this.missionManager.getAllMissions();
+    this.filterBarEl.innerHTML = '';
+
+    for (const cat of MISSION_CATEGORIES) {
+      const catMissions = cat.id === 'all'
+        ? allMissions
+        : allMissions.filter(m => m.category === cat.id);
+      const completedCount = catMissions.filter(m => m.completed).length;
+
+      const pill = document.createElement('button');
+      pill.type = 'button';
+      pill.className = `filter-pill ${this.selectedCategory === cat.id ? 'active' : ''}`;
+      const label = this.language === 'ja' ? cat.ja : cat.en;
+      pill.textContent = `${cat.icon} ${label} (${completedCount}/${catMissions.length})`;
+      pill.addEventListener('click', () => {
+        this.selectedCategory = cat.id;
+        this.renderMissionList();
+      });
+      this.filterBarEl.appendChild(pill);
+    }
+  }
+
   renderMissionList() {
     if (!this.missionListContainer || !this.missionManager) return;
-    const missions = this.missionManager.getAllMissions();
+    this.renderCategoryFilters();
+
+    const allMissions = this.missionManager.getAllMissions();
+    const missions = this.selectedCategory === 'all'
+      ? allMissions
+      : allMissions.filter(m => m.category === this.selectedCategory);
     this.missionListContainer.innerHTML = '';
 
     for (const m of missions) {

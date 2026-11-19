@@ -98,6 +98,13 @@ export class WorldManager {
     );
   }
 
+  resetObjects() {
+    if (!this.baseWorldData) {
+      this.baseWorldData = this.terrainGenerator.generate();
+    }
+    this.objectManager.spawnObjects(this.baseWorldData.objects, [], []);
+  }
+
   update(dt) {
     this.objectManager.update(dt);
     // Gentle cloud drift

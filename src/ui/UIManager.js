@@ -13,12 +13,14 @@ export class UIManager {
     initialSettings,
     onStartNewGame,
     onContinueGame,
+    onResetWorldObjects,
     onUIModalStateChange
   }) {
     this.eventBus = eventBus;
     this.saveManager = saveManager;
     this.onStartNewGame = onStartNewGame;
     this.onContinueGame = onContinueGame;
+    this.onResetWorldObjects = onResetWorldObjects;
     this.onUIModalStateChange = onUIModalStateChange;
 
     this.hud = new HUD(eventBus, inventoryManager, learningManager, initialSettings);
@@ -43,6 +45,8 @@ export class UIManager {
     this.btnOpenSettings = document.getElementById('open-settings-btn');
     this.btnCloseSettings = document.getElementById('close-settings-btn');
     this.btnBackToTitle = document.getElementById('back-to-title-btn');
+    this.resetObjectsRowEl = document.getElementById('setting-row-reset-objects');
+    this.btnResetWorldObjects = document.getElementById('reset-world-objects-btn');
     this.btnQuickLang = document.getElementById('quick-lang-btn');
 
     this.btnOpenMissions = document.getElementById('open-missions-btn');
@@ -50,6 +54,7 @@ export class UIManager {
     this.btnCloseMissionModal = document.getElementById('close-mission-modal-btn');
 
     this.inGame = false;
+    this._resetFeedbackTimer = null;
     this._bindEvents();
   }
 
@@ -79,6 +84,18 @@ export class UIManager {
     this.btnBackToTitle?.addEventListener('click', () => {
       this.closeSettingsModal();
       this.showTitleScreen();
+    });
+
+    this.btnResetWorldObjects?.addEventListener('click', async () => {
+      if (!this.inGame || !this.onResetWorldObjects) return;
+      await this.onResetWorldObjects();
+      this.btnResetWorldObjects.classList.add('active');
+      this.btnResetWorldObjects.textContent = '✅ Reset! (もどしました)';
+      clearTimeout(this._resetFeedbackTimer);
+      this._resetFeedbackTimer = setTimeout(() => {
+        this.btnResetWorldObjects.textContent = '🔄 Reset Objects (初期状態に戻す)';
+        this.btnResetWorldObjects.classList.remove('active');
+      }, 1800);
     });
 
     this.btnQuickLang?.addEventListener('click', () => {
@@ -149,6 +166,7 @@ export class UIManager {
   }
 
   openSettingsModal() {
+    this.resetObjectsRowEl?.classList.toggle('hidden', !this.inGame);
     this.settingsModalEl?.classList.remove('hidden');
     this._notifyModalState();
   }

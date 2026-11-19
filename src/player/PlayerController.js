@@ -31,6 +31,7 @@ export class PlayerController {
     };
 
     this.controlsEnabled = true;
+    this.runTimer = 0;
     this._bindKeyboard();
     this.resetPosition(Config.PLAYER.START_POS);
   }
@@ -170,13 +171,30 @@ export class PlayerController {
 
     this.mesh.position.copy(this.position);
 
-    // 5. Update character animation state
+    // 5. Update character animation state & run learning event
     let animState = 'idle';
     if (!this.onGround) {
       animState = 'jump';
     } else if (isMoving) {
       animState = this.keys.sprint ? 'run' : 'walk';
     }
+
+    if (isMoving && this.keys.sprint) {
+      if (this.onGround) {
+        this.runTimer += safeDt;
+        while (this.runTimer >= 1.0) {
+          this.runTimer -= 1.0;
+          if (this.eventBus) {
+            this.eventBus.emit(LearningEvents.PLAYER_RAN, {
+              position: this.getPositionArray()
+            });
+          }
+        }
+      }
+    } else {
+      this.runTimer = 0;
+    }
+
     this.animation.update(safeDt, animState);
   }
 

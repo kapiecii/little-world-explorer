@@ -36,6 +36,8 @@ export class ObjectManager {
     }
     this.objects.clear();
     this.collectedUids = new Set(savedCollected);
+    this.hoveredUid = null;
+    this.selectedUid = null;
 
     const farmStageMap = new Map();
     if (Array.isArray(savedFarmPlots)) {

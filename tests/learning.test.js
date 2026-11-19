@@ -44,6 +44,51 @@ export async function runLearningTests(assert) {
       audio: 'Stack three blocks high!',
       objective: { type: 'stack', target: 'any', count: 3 },
       reward: { type: 'decoration', itemId: 'star' }
+    },
+    {
+      id: 'break_two_stones_001',
+      category: 'math',
+      difficulty: 2,
+      instruction: { en: 'Remove 2 stone blocks!', ja: '石ブロックを2個取り除こう！' },
+      audio: 'Remove two stone blocks!',
+      objective: { type: 'break', target: 'stone', count: 2 },
+      reward: { type: 'decoration', itemId: 'star' }
+    },
+    {
+      id: 'run_fast_001',
+      category: 'english',
+      difficulty: 1,
+      instruction: { en: 'Run fast with Shift!', ja: 'Shiftキーを押しながら3秒走ろう！' },
+      audio: 'Run fast with Shift!',
+      objective: { type: 'run', target: 'any', count: 3 },
+      reward: { type: 'decoration', itemId: 'star' }
+    },
+    {
+      id: 'place_colorful_blocks_001',
+      category: 'color_shape',
+      difficulty: 2,
+      instruction: { en: 'Place 5 colorful blocks!', ja: 'カラフルな色ブロックを5個置こう！' },
+      audio: 'Place five colorful blocks!',
+      objective: { type: 'place_color', target: 'any', count: 5 },
+      reward: { type: 'decoration', itemId: 'star' }
+    },
+    {
+      id: 'build_animal_fence_001',
+      category: 'logic',
+      difficulty: 3,
+      instruction: { en: 'Build a fence in the animal area!', ja: '動物エリアにブロックを6個置いて柵を作ろう！' },
+      audio: 'Build a fence in the animal area!',
+      objective: { type: 'build_fence', target: 'animal_area', count: 6 },
+      reward: { type: 'decoration', itemId: 'star' }
+    },
+    {
+      id: 'bloom_flower_001',
+      category: 'science',
+      difficulty: 3,
+      instruction: { en: 'Grow a flower to full bloom!', ja: '畑の植物に水をあげて花を咲かせよう！' },
+      audio: 'Grow a flower to full bloom!',
+      objective: { type: 'grow', target: 'flower', count: 1 },
+      reward: { type: 'decoration', itemId: 'star' }
     }
   ];
 
@@ -90,4 +135,42 @@ export async function runLearningTests(assert) {
   assert(spokenTexts.includes('Three blocks!'), 'Stacking 3 blocks should speak "Three blocks!"');
   assert(missions.completedMissions.has('stack_three_blocks_001'), 'Stacking 3 blocks should complete stack_three_blocks_001');
   assert(learning.getSerializedState().discoveredWords.includes('tree'), 'Discovered words should be serialized');
+
+  // Test 5: Breaking stone blocks completes break mission
+  missions.startMission('break_two_stones_001');
+  bus.emit(LearningEvents.BLOCK_DESTROYED, { blockId: 'wood' });
+  assert(!missions.completedMissions.has('break_two_stones_001'), 'Breaking wood should not advance stone break mission');
+  bus.emit(LearningEvents.BLOCK_DESTROYED, { blockId: 'stone' });
+  bus.emit(LearningEvents.BLOCK_DESTROYED, { blockId: 'stone' });
+  assert(missions.completedMissions.has('break_two_stones_001'), 'Breaking 2 stones should complete break_two_stones_001');
+
+  // Test 6: Running completes run mission and discovers "run"
+  missions.startMission('run_fast_001');
+  bus.emit(LearningEvents.PLAYER_RAN, { position: [10, 3, 10] });
+  bus.emit(LearningEvents.PLAYER_RAN, { position: [11, 3, 10] });
+  bus.emit(LearningEvents.PLAYER_RAN, { position: [12, 3, 10] });
+  assert(missions.completedMissions.has('run_fast_001'), 'Running 3 seconds should complete run_fast_001');
+  assert(vocab.isDiscovered('run'), 'Running should mark "run" as discovered');
+
+  // Test 7: Placing colorful blocks completes place_color mission
+  missions.startMission('place_colorful_blocks_001');
+  bus.emit(LearningEvents.BLOCK_PLACED, { blockId: 'stone', stackHeight: 1 });
+  for (const colorId of ['red', 'blue', 'yellow', 'green', 'red']) {
+    bus.emit(LearningEvents.BLOCK_PLACED, { blockId: colorId, stackHeight: 1 });
+  }
+  assert(missions.completedMissions.has('place_colorful_blocks_001'), 'Placing 5 color blocks should complete place_colorful_blocks_001');
+
+  // Test 8: Placing blocks in animal area completes build_fence mission
+  missions.startMission('build_animal_fence_001');
+  for (let i = 0; i < 6; i++) {
+    bus.emit(LearningEvents.BLOCK_PLACED, { blockId: 'wood', stackHeight: 1, isAnimalArea: true });
+  }
+  assert(missions.completedMissions.has('build_animal_fence_001'), 'Placing 6 blocks in animal area should complete build_animal_fence_001');
+
+  // Test 9: Plant reaching Flower stage completes bloom_flower_001
+  missions.startMission('bloom_flower_001');
+  bus.emit(LearningEvents.PLANT_GROWN, { stageName: 'Sprout' });
+  assert(!missions.completedMissions.has('bloom_flower_001'), 'Sprout stage should not complete flower bloom mission');
+  bus.emit(LearningEvents.PLANT_GROWN, { stageName: 'Flower' });
+  assert(missions.completedMissions.has('bloom_flower_001'), 'Flower stage should complete bloom_flower_001');
 }
