@@ -119,6 +119,8 @@ export class GameController {
       onStartNewGame: () => this.startNewGame(),
       onContinueGame: () => this.continueGame(),
       onResetWorldObjects: () => this.resetWorldObjects(),
+      onExportSave: () => this.exportSaveFile(),
+      onImportSave: (jsonText) => this.importSaveFile(jsonText),
       onUIModalStateChange: (gameplayActive) => this._setGameplayActive(gameplayActive)
     });
 
@@ -252,6 +254,78 @@ export class GameController {
       force: true
     });
     return true;
+  }
+
+  async exportSaveFile() {
+    const overrideState = this.uiManager?.inGame ? this.getFullSaveState() : null;
+    const jsonText = await this.saveManager.exportSaveJson(overrideState);
+    if (!jsonText) {
+      return { ok: false, error: 'No save data found' };
+    }
+
+    const now = new Date();
+    const pad = (n) => String(n).padStart(2, '0');
+    const stamp = `${now.getFullYear()}${pad(now.getMonth() + 1)}${pad(now.getDate())}-${pad(now.getHours())}${pad(now.getMinutes())}${pad(now.getSeconds())}`;
+    const filename = `little-world-explorer-save-${stamp}.json`;
+
+    if (typeof document !== 'undefined' && typeof Blob !== 'undefined' && typeof URL !== 'undefined') {
+      const blob = new Blob([jsonText], { type: 'application/json' });
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.href = url;
+      a.download = filename;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+      setTimeout(() => URL.revokeObjectURL(url), 1000);
+    }
+
+    return { ok: true, filename };
+  }
+
+  async importSaveFile(jsonText) {
+    const result = await this.saveManager.importSaveJson(jsonText);
+    if (!result.ok || !result.data) {
+      return result;
+    }
+
+    const saved = result.data;
+    this.audioManager.unlockAudio();
+
+    if (saved.world) {
+      this.worldManager.restoreWorld(saved.world);
+    }
+    if (saved.player?.inventory) {
+      this.inventoryManager.restoreState(saved.player.inventory);
+    }
+    if (saved.player?.position) {
+      this.playerController.resetPosition(saved.player.position);
+    }
+    if (saved.learning) {
+      this.learningManager.restoreState(saved.learning);
+      this.uiManager.missionUI.renderHudCard();
+      this.uiManager.missionUI.renderModalContent();
+    }
+    if (saved.settings && this.uiManager?.settingsUI) {
+      this.uiManager.settingsUI.updateSetting(saved.settings);
+      this.uiManager._updateQuickLangLabel(saved.settings.language || 'en');
+    }
+
+    await this.uiManager.refreshContinueButton();
+    if (!this.uiManager.inGame) {
+      this.uiManager.closeSettingsModal();
+      this.uiManager.hideTitleScreen();
+    }
+
+    this.saveManager.startAutoSave();
+    this.eventBus.emit(LearningEvents.SFX_REQUESTED, { type: 'collect' });
+    this.eventBus.emit(LearningEvents.SPEAK_REQUESTED, {
+      text: 'Save data loaded! Welcome back!',
+      priority: AudioPriority.HIGH,
+      force: true
+    });
+
+    return { ok: true };
   }
 
   getFullSaveState() {

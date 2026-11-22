@@ -52,6 +52,26 @@ export async function runSaveTests(assert) {
   assert(restored.learning.discoveredWords.includes('tree'), 'Restored discoveredWords should include "tree"');
   assert(restored.learning.completedMissions.includes('find_apples_001'), 'Restored completedMissions should include "find_apples_001"');
 
+  // Test 3: Export to JSON and import into a fresh browser state
+  const exportedJson = await saveMgr.exportSaveJson();
+  assert(typeof exportedJson === 'string' && exportedJson.includes('"little-world-explorer"'), 'exportSaveJson should return valid JSON string with app identifier');
+
+  await saveMgr.clearSave();
+  assert((await saveMgr.hasSaveData()) === false, 'hasSaveData should be false after clearSave');
+
+  const badJsonRes = await saveMgr.importSaveJson('{invalid json');
+  assert(badJsonRes.ok === false, 'importSaveJson should reject malformed JSON');
+
+  const missingWorldRes = await saveMgr.importSaveJson('{"foo":"bar"}');
+  assert(missingWorldRes.ok === false, 'importSaveJson should reject JSON missing world object');
+
+  const importRes = await saveMgr.importSaveJson(exportedJson);
+  assert(importRes.ok === true && importRes.data, 'importSaveJson should succeed for exported save file');
+  assert(importRes.data.world.blocks.length === 2, 'Imported world blocks should match exported data');
+  assert(importRes.data.player.position[0] === 15, 'Imported player position should match exported data');
+  assert(importRes.data.learning.completedMissions.includes('find_apples_001'), 'Imported completedMissions should match exported data');
+  assert(saveMgr.loadSettings().language === 'ja', 'Imported settings should be persisted');
+
   // Clean up test save and restore default settings
   await saveMgr.clearSave();
   saveMgr.saveSettings({

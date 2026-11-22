@@ -14,6 +14,8 @@ export class UIManager {
     onStartNewGame,
     onContinueGame,
     onResetWorldObjects,
+    onExportSave,
+    onImportSave,
     onUIModalStateChange
   }) {
     this.eventBus = eventBus;
@@ -21,6 +23,8 @@ export class UIManager {
     this.onStartNewGame = onStartNewGame;
     this.onContinueGame = onContinueGame;
     this.onResetWorldObjects = onResetWorldObjects;
+    this.onExportSave = onExportSave;
+    this.onImportSave = onImportSave;
     this.onUIModalStateChange = onUIModalStateChange;
 
     this.hud = new HUD(eventBus, inventoryManager, learningManager, initialSettings);
@@ -47,6 +51,9 @@ export class UIManager {
     this.btnBackToTitle = document.getElementById('back-to-title-btn');
     this.resetObjectsRowEl = document.getElementById('setting-row-reset-objects');
     this.btnResetWorldObjects = document.getElementById('reset-world-objects-btn');
+    this.btnExportSave = document.getElementById('export-save-btn');
+    this.btnImportSave = document.getElementById('import-save-btn');
+    this.importSaveFileInput = document.getElementById('import-save-file-input');
     this.btnQuickLang = document.getElementById('quick-lang-btn');
 
     this.btnOpenMissions = document.getElementById('open-missions-btn');
@@ -55,6 +62,8 @@ export class UIManager {
 
     this.inGame = false;
     this._resetFeedbackTimer = null;
+    this._exportFeedbackTimer = null;
+    this._importFeedbackTimer = null;
     this._bindEvents();
   }
 
@@ -96,6 +105,52 @@ export class UIManager {
         this.btnResetWorldObjects.textContent = '🔄 Reset Objects (初期状態に戻す)';
         this.btnResetWorldObjects.classList.remove('active');
       }, 1800);
+    });
+
+    this.btnExportSave?.addEventListener('click', async () => {
+      if (!this.onExportSave) return;
+      const res = await this.onExportSave();
+      clearTimeout(this._exportFeedbackTimer);
+      if (res?.ok) {
+        this.btnExportSave.classList.add('active');
+        this.btnExportSave.textContent = '✅ Exported! (書き出し完了)';
+      } else {
+        this.btnExportSave.textContent = '⚠️ No Save (データなし)';
+      }
+      this._exportFeedbackTimer = setTimeout(() => {
+        this.btnExportSave.textContent = '⬇️ Export (書き出し)';
+        this.btnExportSave.classList.remove('active');
+      }, 2000);
+    });
+
+    this.btnImportSave?.addEventListener('click', () => {
+      this.importSaveFileInput?.click();
+    });
+
+    this.importSaveFileInput?.addEventListener('change', async (e) => {
+      const file = e.target.files?.[0];
+      e.target.value = '';
+      if (!file || !this.onImportSave) return;
+
+      let text = '';
+      try {
+        text = await file.text();
+      } catch {
+        text = '';
+      }
+
+      const res = await this.onImportSave(text);
+      clearTimeout(this._importFeedbackTimer);
+      if (res?.ok) {
+        this.btnImportSave.classList.add('active');
+        this.btnImportSave.textContent = '✅ Imported! (読み込み完了)';
+      } else {
+        this.btnImportSave.textContent = '❌ Invalid File (読み込み失敗)';
+      }
+      this._importFeedbackTimer = setTimeout(() => {
+        this.btnImportSave.textContent = '⬆️ Import (読み込み)';
+        this.btnImportSave.classList.remove('active');
+      }, 2200);
     });
 
     this.btnQuickLang?.addEventListener('click', () => {

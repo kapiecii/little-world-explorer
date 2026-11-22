@@ -188,6 +188,76 @@ export class SaveManager {
     return Boolean(data && data.world);
   }
 
+  validateSaveData(data) {
+    if (!data || typeof data !== 'object' || Array.isArray(data)) {
+      return { valid: false, error: 'Invalid save format: expected JSON object' };
+    }
+    if (!data.world || typeof data.world !== 'object') {
+      return { valid: false, error: 'Invalid save format: missing world data' };
+    }
+    if (data.world.blocks !== undefined && !Array.isArray(data.world.blocks)) {
+      return { valid: false, error: 'Invalid save format: world.blocks must be an array' };
+    }
+    if (data.player !== undefined && (typeof data.player !== 'object' || data.player === null)) {
+      return { valid: false, error: 'Invalid save format: invalid player data' };
+    }
+    if (data.learning !== undefined && (typeof data.learning !== 'object' || data.learning === null)) {
+      return { valid: false, error: 'Invalid save format: invalid learning data' };
+    }
+    return { valid: true };
+  }
+
+  async exportSaveJson(overrideState = null) {
+    let record = null;
+    if (overrideState) {
+      await this.saveGame(overrideState, 'export');
+      record = await this.loadGame();
+    } else {
+      record = await this.loadGame();
+    }
+    if (!record || !record.world) {
+      return null;
+    }
+
+    const exportPayload = {
+      app: 'little-world-explorer',
+      exportedAt: new Date().toISOString(),
+      version: record.version || Config.VERSION,
+      world: record.world,
+      player: record.player,
+      learning: record.learning,
+      settings: record.settings || this.loadSettings()
+    };
+
+    return JSON.stringify(exportPayload, null, 2);
+  }
+
+  async importSaveJson(jsonText) {
+    if (typeof jsonText !== 'string' || !jsonText.trim()) {
+      return { ok: false, error: 'Empty save file' };
+    }
+
+    let parsed;
+    try {
+      parsed = JSON.parse(jsonText);
+    } catch {
+      return { ok: false, error: 'Invalid JSON file' };
+    }
+
+    const check = this.validateSaveData(parsed);
+    if (!check.valid) {
+      return { ok: false, error: check.error };
+    }
+
+    const savedOk = await this.saveGame(parsed, 'import');
+    if (!savedOk) {
+      return { ok: false, error: 'Failed to persist imported save' };
+    }
+
+    const loaded = await this.loadGame();
+    return { ok: true, data: loaded };
+  }
+
   async clearSave() {
     this.memoryFallback.delete(this.saveKey);
     try {
