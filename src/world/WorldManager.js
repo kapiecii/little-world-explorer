@@ -12,6 +12,8 @@ export class WorldManager {
     this.objectManager = new ObjectManager(scene, eventBus, objectDefs, inventoryManager);
 
     this.baseWorldData = null;
+    this.currentStageId = 'island';
+    this.stageStates = {}; // stageId -> { blocks, farmPlots, collectedObjectIds }
     this.cloudsGroup = new THREE.Group();
     this.createdAt = Date.now();
 
@@ -67,42 +69,79 @@ export class WorldManager {
     this.scene.add(this.cloudsGroup);
   }
 
-  buildNewWorld() {
-    this.createdAt = Date.now();
-    this.baseWorldData = this.terrainGenerator.generate();
-    this.blockManager.loadInitialBlocks(
-      this.baseWorldData.blocks,
-      this.baseWorldData.riverCoords,
-      this.baseWorldData.tableAnchor
-    );
-    this.objectManager.spawnObjects(this.baseWorldData.objects, [], []);
+  _captureCurrentStageSnapshot() {
+    return {
+      blocks: this.blockManager.getModifiedBlocksArray(),
+      farmPlots: this.objectManager.getFarmPlotStates(),
+      collectedObjectIds: this.objectManager.getCollectedUids()
+    };
   }
 
-  restoreWorld(savedWorld = {}) {
-    this.baseWorldData = this.terrainGenerator.generate();
-    this.createdAt = savedWorld.createdAt || Date.now();
+  _loadStage(stageId, savedStageState = null) {
+    this.currentStageId = stageId === 'town' ? 'town' : 'island';
+    this.baseWorldData = this.terrainGenerator.generate(this.currentStageId);
 
     this.blockManager.loadInitialBlocks(
       this.baseWorldData.blocks,
       this.baseWorldData.riverCoords,
-      this.baseWorldData.tableAnchor
+      this.baseWorldData.tableAnchor,
+      this.currentStageId
     );
-    if (Array.isArray(savedWorld.blocks)) {
-      this.blockManager.applyModifiedBlocks(savedWorld.blocks);
+    if (savedStageState && Array.isArray(savedStageState.blocks)) {
+      this.blockManager.applyModifiedBlocks(savedStageState.blocks);
     }
 
     this.objectManager.spawnObjects(
       this.baseWorldData.objects,
-      savedWorld.collectedObjectIds || [],
-      savedWorld.farmPlots || []
+      savedStageState?.collectedObjectIds || [],
+      savedStageState?.farmPlots || []
     );
+
+    if (this.scene) {
+      const skyHex = this.currentStageId === 'town' ? 0x93d5ff : 0x87ceeb;
+      this.scene.background = new THREE.Color(skyHex);
+      if (this.scene.fog && this.scene.fog.color) {
+        this.scene.fog.color.setHex(skyHex);
+      }
+    }
+  }
+
+  buildNewWorld(stageId = 'island') {
+    this.createdAt = Date.now();
+    this.stageStates = {};
+    this._loadStage(stageId, null);
+  }
+
+  switchStage(targetStageId) {
+    const nextStage = targetStageId === 'town' ? 'town' : 'island';
+    if (this.baseWorldData) {
+      this.stageStates[this.currentStageId] = this._captureCurrentStageSnapshot();
+    }
+    this._loadStage(nextStage, this.stageStates[nextStage] || null);
+    return this.currentStageId;
+  }
+
+  restoreWorld(savedWorld = {}) {
+    this.createdAt = savedWorld.createdAt || Date.now();
+    const targetStage = savedWorld.currentStageId === 'town' ? 'town' : 'island';
+    this.stageStates = savedWorld.stages && typeof savedWorld.stages === 'object'
+      ? { ...savedWorld.stages }
+      : {};
+
+    const stageData = this.stageStates[targetStage] || {
+      blocks: savedWorld.blocks || [],
+      farmPlots: savedWorld.farmPlots || [],
+      collectedObjectIds: savedWorld.collectedObjectIds || []
+    };
+    this._loadStage(targetStage, stageData);
   }
 
   resetObjects() {
     if (!this.baseWorldData) {
-      this.baseWorldData = this.terrainGenerator.generate();
+      this.baseWorldData = this.terrainGenerator.generate(this.currentStageId);
     }
     this.objectManager.spawnObjects(this.baseWorldData.objects, [], []);
+    this.stageStates[this.currentStageId] = this._captureCurrentStageSnapshot();
   }
 
   update(dt) {
@@ -117,11 +156,18 @@ export class WorldManager {
   }
 
   getSerializedState() {
+    const currentSnapshot = this._captureCurrentStageSnapshot();
+    const stages = {
+      ...this.stageStates,
+      [this.currentStageId]: currentSnapshot
+    };
     return {
       id: 'world_001',
-      blocks: this.blockManager.getModifiedBlocksArray(),
-      farmPlots: this.objectManager.getFarmPlotStates(),
-      collectedObjectIds: this.objectManager.getCollectedUids(),
+      currentStageId: this.currentStageId,
+      blocks: currentSnapshot.blocks,
+      farmPlots: currentSnapshot.farmPlots,
+      collectedObjectIds: currentSnapshot.collectedObjectIds,
+      stages,
       createdAt: this.createdAt,
       updatedAt: Date.now()
     };

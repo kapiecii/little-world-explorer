@@ -388,5 +388,187 @@
       "2": "Yellow Triangle!",
       "3": "A triangle has three corners!"
     }
+  },
+  {
+    "id": "car",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Car",
+    "ja": "くるま",
+    "icon": "🚗",
+    "levels": {
+      "1": "Car!",
+      "2": "Red Car!",
+      "3": "The red car drives on the road!"
+    }
+  },
+  {
+    "id": "bus",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Bus",
+    "ja": "バス",
+    "icon": "🚌",
+    "levels": {
+      "1": "Bus!",
+      "2": "Yellow Bus!",
+      "3": "Ride the big yellow bus in town!"
+    }
+  },
+  {
+    "id": "bicycle",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Bicycle",
+    "ja": "じてんしゃ",
+    "icon": "🚲",
+    "levels": {
+      "1": "Bicycle!",
+      "2": "Blue Bicycle!",
+      "3": "Let us ride a blue bicycle!"
+    }
+  },
+  {
+    "id": "traffic_light",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Traffic Light",
+    "ja": "しんごうき",
+    "icon": "🚦",
+    "levels": {
+      "1": "Traffic Light!",
+      "2": "Stop and Go!",
+      "3": "Red means stop, green means go!"
+    }
+  },
+  {
+    "id": "stop",
+    "category": "english",
+    "subCategory": "action",
+    "en": "Stop",
+    "ja": "とまる",
+    "icon": "🛑",
+    "levels": {
+      "1": "Stop!",
+      "2": "Red Light, Stop!",
+      "3": "When the light is red, please stop!"
+    }
+  },
+  {
+    "id": "go",
+    "category": "english",
+    "subCategory": "action",
+    "en": "Go",
+    "ja": "すすむ",
+    "icon": "🟢",
+    "levels": {
+      "1": "Go!",
+      "2": "Green Light, Go!",
+      "3": "When the light is green, you can go!"
+    }
+  },
+  {
+    "id": "bread",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Bread",
+    "ja": "パン",
+    "icon": "🥖",
+    "levels": {
+      "1": "Bread!",
+      "2": "Warm Bread!",
+      "3": "Buy yummy bread at the bakery!"
+    }
+  },
+  {
+    "id": "ice_cream",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Ice Cream",
+    "ja": "アイスクリーム",
+    "icon": "🍦",
+    "levels": {
+      "1": "Ice Cream!",
+      "2": "Sweet Ice Cream!",
+      "3": "Eat cool ice cream in the park!"
+    }
+  },
+  {
+    "id": "book",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Book",
+    "ja": "ほん",
+    "icon": "📚",
+    "levels": {
+      "1": "Book!",
+      "2": "Read a Book!",
+      "3": "Read a fun book at school!"
+    }
+  },
+  {
+    "id": "mailbox",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Mailbox",
+    "ja": "ゆうびんポスト",
+    "icon": "📮",
+    "levels": {
+      "1": "Mailbox!",
+      "2": "Red Mailbox!",
+      "3": "Put a letter in the mailbox!"
+    }
+  },
+  {
+    "id": "fountain",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Fountain",
+    "ja": "ふんすい",
+    "icon": "⛲",
+    "levels": {
+      "1": "Fountain!",
+      "2": "Park Fountain!",
+      "3": "Look at the water splashing in the fountain!"
+    }
+  },
+  {
+    "id": "clock_tower",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Clock",
+    "ja": "とけい",
+    "icon": "🕰️",
+    "levels": {
+      "1": "Clock!",
+      "2": "Big Clock!",
+      "3": "The big town clock goes tick tock!"
+    }
+  },
+  {
+    "id": "town",
+    "category": "spatial",
+    "subCategory": "place",
+    "en": "Town",
+    "ja": "まち",
+    "icon": "🏙️",
+    "levels": {
+      "1": "Town!",
+      "2": "Sunny Town!",
+      "3": "Welcome to Sunny Town!"
+    }
+  },
+  {
+    "id": "island",
+    "category": "spatial",
+    "subCategory": "place",
+    "en": "Island",
+    "ja": "しま",
+    "icon": "🏝️",
+    "levels": {
+      "1": "Island!",
+      "2": "Nature Island!",
+      "3": "Welcome back to Nature Island!"
+    }
   }
 ]

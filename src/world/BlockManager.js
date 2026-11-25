@@ -19,6 +19,7 @@ export class BlockManager {
 
     this.riverCoords = new Set();
     this.tableAnchor = { x: 22, y: 3, z: 38 };
+    this.stageId = 'island';
 
     this.group = new THREE.Group();
     this.group.name = 'VoxelBlocksGroup';
@@ -46,14 +47,13 @@ export class BlockManager {
     }
   }
 
-  loadInitialBlocks(blocksMap, riverCoords = new Set(), tableAnchor = null) {
+  loadInitialBlocks(blocksMap, riverCoords = new Set(), tableAnchor = null, stageId = 'island') {
     this.blocks = new Map(blocksMap);
     this.userPlacedCoords.clear();
     this.modifiedBlocks.clear();
     this.riverCoords = riverCoords;
-    if (tableAnchor) {
-      this.tableAnchor = tableAnchor;
-    }
+    this.tableAnchor = tableAnchor;
+    this.stageId = stageId;
     this.rebuildMeshes();
   }
 
@@ -142,9 +142,9 @@ export class BlockManager {
       }
     }
 
-    const isAnimalArea = bx >= 36 && bz >= 32;
-    const isFarmArea = bx >= 36 && bz <= 25;
-    const isBuildingArea = bx <= 26 && bz >= 32;
+    const isAnimalArea = this.stageId === 'island' && bx >= 36 && bz >= 32;
+    const isFarmArea = this.stageId === 'island' && bx >= 36 && bz <= 25;
+    const isBuildingArea = this.stageId === 'island' && bx <= 26 && bz >= 32;
 
     if (this.eventBus) {
       this.eventBus.emit(LearningEvents.BLOCK_PLACED, {
@@ -155,7 +155,8 @@ export class BlockManager {
         isRiverBridge: Boolean(wasRiverWater && by <= 3),
         isAnimalArea,
         isFarmArea,
-        isBuildingArea
+        isBuildingArea,
+        stageId: this.stageId
       });
     }
 

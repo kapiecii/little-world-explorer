@@ -1078,6 +1078,370 @@ export const DEFAULT_OBJECTS = [
       "observe",
       "collect"
     ]
+  },
+  {
+    "id": "car",
+    "type": "vehicle",
+    "name": {
+      "en": "Car",
+      "ja": "くるま"
+    },
+    "icon": "🚗",
+    "color": "#ef4444",
+    "audio": {
+      "name": "Car",
+      "level1": "Car!",
+      "level2": "Red Car! Beep beep!",
+      "level3": "The red car drives on the road!"
+    },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "countable": true,
+      "categories": [
+        "english",
+        "color_shape"
+      ]
+    },
+    "interactions": [
+      "observe"
+    ]
+  },
+  {
+    "id": "bus",
+    "type": "vehicle",
+    "name": {
+      "en": "Bus",
+      "ja": "バス"
+    },
+    "icon": "🚌",
+    "color": "#facc15",
+    "audio": {
+      "name": "Bus",
+      "level1": "Bus!",
+      "level2": "Yellow School Bus!",
+      "level3": "Let us ride the big yellow bus!"
+    },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "size": "big",
+      "countable": true,
+      "categories": [
+        "english",
+        "color_shape"
+      ]
+    },
+    "interactions": [
+      "observe"
+    ]
+  },
+  {
+    "id": "bicycle",
+    "type": "vehicle",
+    "name": {
+      "en": "Bicycle",
+      "ja": "じてんしゃ"
+    },
+    "icon": "🚲",
+    "color": "#3b82f6",
+    "audio": {
+      "name": "Bicycle",
+      "level1": "Bicycle!",
+      "level2": "Blue Bicycle!",
+      "level3": "Ride a blue bicycle in the park!"
+    },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "countable": true,
+      "categories": [
+        "english",
+        "color_shape"
+      ]
+    },
+    "interactions": [
+      "observe"
+    ]
+  },
+  {
+    "id": "traffic_light",
+    "type": "town_object",
+    "name": {
+      "en": "Traffic Light",
+      "ja": "しんごうき"
+    },
+    "icon": "🚦",
+    "color": "#334155",
+    "audio": {
+      "name": "Traffic Light",
+      "level1": "Traffic Light!",
+      "level2": "Red Stop, Green Go!",
+      "level3": "Click the traffic light to change Stop and Go!"
+    },
+    "learning": {
+      "english": true,
+      "color": "green",
+      "categories": [
+        "english",
+        "logic",
+        "color_shape"
+      ]
+    },
+    "interactions": [
+      "observe",
+      "toggle_signal"
+    ]
+  },
+  {
+    "id": "bread",
+    "type": "food",
+    "name": {
+      "en": "Bread",
+      "ja": "パン"
+    },
+    "icon": "🥖",
+    "color": "#d97706",
+    "audio": {
+      "name": "Bread",
+      "level1": "Bread!",
+      "level2": "Yummy Bread!",
+      "level3": "You bought warm bread at the bakery!"
+    },
+    "learning": {
+      "english": true,
+      "color": "brown",
+      "countable": true,
+      "categories": [
+        "english",
+        "math"
+      ]
+    },
+    "interactions": [
+      "observe",
+      "collect"
+    ]
+  },
+  {
+    "id": "ice_cream",
+    "type": "food",
+    "name": {
+      "en": "Ice Cream",
+      "ja": "アイスクリーム"
+    },
+    "icon": "🍦",
+    "color": "#f472b6",
+    "audio": {
+      "name": "Ice Cream",
+      "level1": "Ice Cream!",
+      "level2": "Sweet Ice Cream!",
+      "level3": "A yummy pink ice cream cone!"
+    },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "countable": true,
+      "categories": [
+        "english",
+        "math"
+      ]
+    },
+    "interactions": [
+      "observe",
+      "collect"
+    ]
+  },
+  {
+    "id": "book",
+    "type": "town_object",
+    "name": {
+      "en": "Book",
+      "ja": "ほん"
+    },
+    "icon": "📚",
+    "color": "#2563eb",
+    "audio": {
+      "name": "Book",
+      "level1": "Book!",
+      "level2": "Read a Book!",
+      "level3": "Let us read a fun story book!"
+    },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "countable": true,
+      "categories": [
+        "english",
+        "math"
+      ]
+    },
+    "interactions": [
+      "observe",
+      "collect"
+    ]
+  },
+  {
+    "id": "mailbox",
+    "type": "town_object",
+    "name": {
+      "en": "Mailbox",
+      "ja": "ゆうびんポスト"
+    },
+    "icon": "📮",
+    "color": "#dc2626",
+    "audio": {
+      "name": "Mailbox",
+      "level1": "Mailbox!",
+      "level2": "Red Mailbox!",
+      "level3": "Send a letter in the red mailbox!"
+    },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "categories": [
+        "english",
+        "color_shape"
+      ]
+    },
+    "interactions": [
+      "observe"
+    ]
+  },
+  {
+    "id": "bench",
+    "type": "town_object",
+    "name": {
+      "en": "Bench",
+      "ja": "ベンチ"
+    },
+    "icon": "🪑",
+    "color": "#a16207",
+    "audio": {
+      "name": "Bench",
+      "level1": "Bench!",
+      "level2": "Park Bench!",
+      "level3": "Sit and rest on the park bench!"
+    },
+    "learning": {
+      "english": true,
+      "color": "brown",
+      "categories": [
+        "english",
+        "spatial"
+      ]
+    },
+    "interactions": [
+      "observe"
+    ]
+  },
+  {
+    "id": "fountain",
+    "type": "town_object",
+    "name": {
+      "en": "Fountain",
+      "ja": "ふんすい"
+    },
+    "icon": "⛲",
+    "color": "#38bdf8",
+    "audio": {
+      "name": "Fountain",
+      "level1": "Fountain!",
+      "level2": "Water Fountain!",
+      "level3": "Sparkling water splashes in the fountain!"
+    },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "categories": [
+        "english",
+        "science"
+      ]
+    },
+    "interactions": [
+      "observe"
+    ]
+  },
+  {
+    "id": "clock_tower",
+    "type": "town_object",
+    "name": {
+      "en": "Clock",
+      "ja": "とけい"
+    },
+    "icon": "🕰️",
+    "color": "#fbbf24",
+    "audio": {
+      "name": "Clock",
+      "level1": "Clock!",
+      "level2": "Big Clock! Tick Tock!",
+      "level3": "The big town clock goes tick tock!"
+    },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "categories": [
+        "english",
+        "math"
+      ]
+    },
+    "interactions": [
+      "observe"
+    ]
+  },
+  {
+    "id": "street_lamp",
+    "type": "town_object",
+    "name": {
+      "en": "Street Lamp",
+      "ja": "がいとう"
+    },
+    "icon": "💡",
+    "color": "#fef08a",
+    "audio": {
+      "name": "Street Lamp",
+      "level1": "Lamp!",
+      "level2": "Bright Street Lamp!",
+      "level3": "The street lamp lights up the town!"
+    },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "categories": [
+        "english",
+        "science"
+      ]
+    },
+    "interactions": [
+      "observe"
+    ]
+  },
+  {
+    "id": "travel_gate",
+    "type": "portal",
+    "name": {
+      "en": "Travel Gate",
+      "ja": "ワープゲート（ステージ移動）"
+    },
+    "icon": "🌀",
+    "color": "#8b5cf6",
+    "audio": {
+      "name": "Travel Gate",
+      "level1": "Go!",
+      "level2": "Travel Gate!",
+      "level3": "Click the gate to travel between the Island and Town!"
+    },
+    "learning": {
+      "english": true,
+      "color": "purple",
+      "categories": [
+        "english",
+        "spatial"
+      ]
+    },
+    "interactions": [
+      "observe",
+      "travel"
+    ]
   }
 ];
 
@@ -1470,6 +1834,188 @@ export const DEFAULT_VOCABULARY = [
       "1": "Triangle!",
       "2": "Yellow Triangle!",
       "3": "A triangle has three corners!"
+    }
+  },
+  {
+    "id": "car",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Car",
+    "ja": "くるま",
+    "icon": "🚗",
+    "levels": {
+      "1": "Car!",
+      "2": "Red Car!",
+      "3": "The red car drives on the road!"
+    }
+  },
+  {
+    "id": "bus",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Bus",
+    "ja": "バス",
+    "icon": "🚌",
+    "levels": {
+      "1": "Bus!",
+      "2": "Yellow Bus!",
+      "3": "Ride the big yellow bus in town!"
+    }
+  },
+  {
+    "id": "bicycle",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Bicycle",
+    "ja": "じてんしゃ",
+    "icon": "🚲",
+    "levels": {
+      "1": "Bicycle!",
+      "2": "Blue Bicycle!",
+      "3": "Let us ride a blue bicycle!"
+    }
+  },
+  {
+    "id": "traffic_light",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Traffic Light",
+    "ja": "しんごうき",
+    "icon": "🚦",
+    "levels": {
+      "1": "Traffic Light!",
+      "2": "Stop and Go!",
+      "3": "Red means stop, green means go!"
+    }
+  },
+  {
+    "id": "stop",
+    "category": "english",
+    "subCategory": "action",
+    "en": "Stop",
+    "ja": "とまる",
+    "icon": "🛑",
+    "levels": {
+      "1": "Stop!",
+      "2": "Red Light, Stop!",
+      "3": "When the light is red, please stop!"
+    }
+  },
+  {
+    "id": "go",
+    "category": "english",
+    "subCategory": "action",
+    "en": "Go",
+    "ja": "すすむ",
+    "icon": "🟢",
+    "levels": {
+      "1": "Go!",
+      "2": "Green Light, Go!",
+      "3": "When the light is green, you can go!"
+    }
+  },
+  {
+    "id": "bread",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Bread",
+    "ja": "パン",
+    "icon": "🥖",
+    "levels": {
+      "1": "Bread!",
+      "2": "Warm Bread!",
+      "3": "Buy yummy bread at the bakery!"
+    }
+  },
+  {
+    "id": "ice_cream",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Ice Cream",
+    "ja": "アイスクリーム",
+    "icon": "🍦",
+    "levels": {
+      "1": "Ice Cream!",
+      "2": "Sweet Ice Cream!",
+      "3": "Eat cool ice cream in the park!"
+    }
+  },
+  {
+    "id": "book",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Book",
+    "ja": "ほん",
+    "icon": "📚",
+    "levels": {
+      "1": "Book!",
+      "2": "Read a Book!",
+      "3": "Read a fun book at school!"
+    }
+  },
+  {
+    "id": "mailbox",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Mailbox",
+    "ja": "ゆうびんポスト",
+    "icon": "📮",
+    "levels": {
+      "1": "Mailbox!",
+      "2": "Red Mailbox!",
+      "3": "Put a letter in the mailbox!"
+    }
+  },
+  {
+    "id": "fountain",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Fountain",
+    "ja": "ふんすい",
+    "icon": "⛲",
+    "levels": {
+      "1": "Fountain!",
+      "2": "Park Fountain!",
+      "3": "Look at the water splashing in the fountain!"
+    }
+  },
+  {
+    "id": "clock_tower",
+    "category": "english",
+    "subCategory": "town",
+    "en": "Clock",
+    "ja": "とけい",
+    "icon": "🕰️",
+    "levels": {
+      "1": "Clock!",
+      "2": "Big Clock!",
+      "3": "The big town clock goes tick tock!"
+    }
+  },
+  {
+    "id": "town",
+    "category": "spatial",
+    "subCategory": "place",
+    "en": "Town",
+    "ja": "まち",
+    "icon": "🏙️",
+    "levels": {
+      "1": "Town!",
+      "2": "Sunny Town!",
+      "3": "Welcome to Sunny Town!"
+    }
+  },
+  {
+    "id": "island",
+    "category": "spatial",
+    "subCategory": "place",
+    "en": "Island",
+    "ja": "しま",
+    "icon": "🏝️",
+    "levels": {
+      "1": "Island!",
+      "2": "Nature Island!",
+      "3": "Welcome back to Nature Island!"
     }
   }
 ];
@@ -2939,6 +3485,336 @@ export const DEFAULT_MISSIONS = [
       "type": "place",
       "target": "wood",
       "count": 10
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_visit_001",
+    "category": "spatial",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🏙️",
+    "instruction": {
+      "en": "Visit Sunny Town!",
+      "ja": "街のステージ（Sunny Town）へ行ってみよう！"
+    },
+    "audio": "Let us visit Sunny Town!",
+    "objective": {
+      "type": "visit_stage",
+      "target": "town",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_car_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🚗",
+    "instruction": {
+      "en": "Town: Find a red car!",
+      "ja": "【街】赤い車（Car）を見つけよう！"
+    },
+    "audio": "Find a red car in town!",
+    "objective": {
+      "type": "select",
+      "target": "car",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_bus_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🚌",
+    "instruction": {
+      "en": "Town: Find a yellow bus!",
+      "ja": "【街】黄色いバス（Bus）を見つけよう！"
+    },
+    "audio": "Find a yellow bus in town!",
+    "objective": {
+      "type": "select",
+      "target": "bus",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_bicycle_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🚲",
+    "instruction": {
+      "en": "Town: Find a blue bicycle!",
+      "ja": "【街】青い自転車（Bicycle）を見つけよう！"
+    },
+    "audio": "Find a blue bicycle in town!",
+    "objective": {
+      "type": "select",
+      "target": "bicycle",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_traffic_light_001",
+    "category": "logic",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🚦",
+    "instruction": {
+      "en": "Town: Change the traffic light 3 times!",
+      "ja": "【街】信号機を3回クリックしてStopとGoを学ぼう！"
+    },
+    "audio": "Click the traffic light three times! Stop and go!",
+    "objective": {
+      "type": "traffic_light",
+      "target": "any",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_collect_bread_001",
+    "category": "math",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🥖",
+    "instruction": {
+      "en": "Town: Collect 3 loaves of bread!",
+      "ja": "【街】パン屋さんでパン（Bread）を3個集めよう！"
+    },
+    "audio": "Collect three loaves of bread at the bakery!",
+    "objective": {
+      "type": "collect",
+      "target": "bread",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_collect_ice_cream_001",
+    "category": "math",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🍦",
+    "instruction": {
+      "en": "Town: Collect 3 ice creams!",
+      "ja": "【街】公園でアイスクリームを3個集めよう！"
+    },
+    "audio": "Collect three ice creams in the park!",
+    "objective": {
+      "type": "collect",
+      "target": "ice_cream",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_collect_books_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "📚",
+    "instruction": {
+      "en": "Town: Collect 3 books at school!",
+      "ja": "【街】学校の前で本（Book）を3冊集めよう！"
+    },
+    "audio": "Collect three books at the school!",
+    "objective": {
+      "type": "collect",
+      "target": "book",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_mailbox_001",
+    "category": "color_shape",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "📮",
+    "instruction": {
+      "en": "Town: Find a red mailbox!",
+      "ja": "【街】赤い郵便ポスト（Mailbox）を見つけよう！"
+    },
+    "audio": "Find a red mailbox in town!",
+    "objective": {
+      "type": "select",
+      "target": "mailbox",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_fountain_001",
+    "category": "science",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "⛲",
+    "instruction": {
+      "en": "Town: Find the park fountain!",
+      "ja": "【街】公園の噴水（Fountain）を見つけよう！"
+    },
+    "audio": "Find the sparkling fountain in the park!",
+    "objective": {
+      "type": "select",
+      "target": "fountain",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_clock_001",
+    "category": "math",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🕰️",
+    "instruction": {
+      "en": "Town: Find the big clock tower!",
+      "ja": "【街】大きな時計塔（Clock）を見つけよう！"
+    },
+    "audio": "Find the big clock in town!",
+    "objective": {
+      "type": "select",
+      "target": "clock_tower",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_bench_001",
+    "category": "spatial",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🪑",
+    "instruction": {
+      "en": "Town: Find a park bench!",
+      "ja": "【街】公園のベンチ（Bench）を見つけよう！"
+    },
+    "audio": "Find a bench in the park!",
+    "objective": {
+      "type": "select",
+      "target": "bench",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_vehicles_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🚙",
+    "instruction": {
+      "en": "Town: Find 3 vehicles!",
+      "ja": "【街】乗り物（車・バス・自転車）を3回見つけよう！"
+    },
+    "audio": "Find three vehicles in town!",
+    "objective": {
+      "type": "select_vehicle",
+      "target": "any",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_build_shop_001",
+    "category": "logic",
+    "stage": "town",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🏪",
+    "instruction": {
+      "en": "Town: Build 5 blocks in Sunny Town!",
+      "ja": "【街】街のステージでブロックを5個配置しよう！"
+    },
+    "audio": "Build five blocks in Sunny Town!",
+    "objective": {
+      "type": "build_town",
+      "target": "town",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_return_island_001",
+    "category": "spatial",
+    "stage": "island",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🏝️",
+    "instruction": {
+      "en": "Travel back to Nature Island!",
+      "ja": "自然の島（Nature Island）へ戻ろう！"
+    },
+    "audio": "Travel back to Nature Island!",
+    "objective": {
+      "type": "visit_stage",
+      "target": "island",
+      "count": 1
     },
     "reward": {
       "type": "decoration",

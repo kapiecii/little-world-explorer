@@ -429,5 +429,259 @@
       "categories": ["english"]
     },
     "interactions": ["observe", "collect"]
+  },
+  {
+    "id": "car",
+    "type": "vehicle",
+    "name": { "en": "Car", "ja": "くるま" },
+    "icon": "🚗",
+    "color": "#ef4444",
+    "audio": {
+      "name": "Car",
+      "level1": "Car!",
+      "level2": "Red Car! Beep beep!",
+      "level3": "The red car drives on the road!"
+    },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "countable": true,
+      "categories": ["english", "color_shape"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "bus",
+    "type": "vehicle",
+    "name": { "en": "Bus", "ja": "バス" },
+    "icon": "🚌",
+    "color": "#facc15",
+    "audio": {
+      "name": "Bus",
+      "level1": "Bus!",
+      "level2": "Yellow School Bus!",
+      "level3": "Let us ride the big yellow bus!"
+    },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "size": "big",
+      "countable": true,
+      "categories": ["english", "color_shape"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "bicycle",
+    "type": "vehicle",
+    "name": { "en": "Bicycle", "ja": "じてんしゃ" },
+    "icon": "🚲",
+    "color": "#3b82f6",
+    "audio": {
+      "name": "Bicycle",
+      "level1": "Bicycle!",
+      "level2": "Blue Bicycle!",
+      "level3": "Ride a blue bicycle in the park!"
+    },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "countable": true,
+      "categories": ["english", "color_shape"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "traffic_light",
+    "type": "town_object",
+    "name": { "en": "Traffic Light", "ja": "しんごうき" },
+    "icon": "🚦",
+    "color": "#334155",
+    "audio": {
+      "name": "Traffic Light",
+      "level1": "Traffic Light!",
+      "level2": "Red Stop, Green Go!",
+      "level3": "Click the traffic light to change Stop and Go!"
+    },
+    "learning": {
+      "english": true,
+      "color": "green",
+      "categories": ["english", "logic", "color_shape"]
+    },
+    "interactions": ["observe", "toggle_signal"]
+  },
+  {
+    "id": "bread",
+    "type": "food",
+    "name": { "en": "Bread", "ja": "パン" },
+    "icon": "🥖",
+    "color": "#d97706",
+    "audio": {
+      "name": "Bread",
+      "level1": "Bread!",
+      "level2": "Yummy Bread!",
+      "level3": "You bought warm bread at the bakery!"
+    },
+    "learning": {
+      "english": true,
+      "color": "brown",
+      "countable": true,
+      "categories": ["english", "math"]
+    },
+    "interactions": ["observe", "collect"]
+  },
+  {
+    "id": "ice_cream",
+    "type": "food",
+    "name": { "en": "Ice Cream", "ja": "アイスクリーム" },
+    "icon": "🍦",
+    "color": "#f472b6",
+    "audio": {
+      "name": "Ice Cream",
+      "level1": "Ice Cream!",
+      "level2": "Sweet Ice Cream!",
+      "level3": "A yummy pink ice cream cone!"
+    },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "countable": true,
+      "categories": ["english", "math"]
+    },
+    "interactions": ["observe", "collect"]
+  },
+  {
+    "id": "book",
+    "type": "town_object",
+    "name": { "en": "Book", "ja": "ほん" },
+    "icon": "📚",
+    "color": "#2563eb",
+    "audio": {
+      "name": "Book",
+      "level1": "Book!",
+      "level2": "Read a Book!",
+      "level3": "Let us read a fun story book!"
+    },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "countable": true,
+      "categories": ["english", "math"]
+    },
+    "interactions": ["observe", "collect"]
+  },
+  {
+    "id": "mailbox",
+    "type": "town_object",
+    "name": { "en": "Mailbox", "ja": "ゆうびんポスト" },
+    "icon": "📮",
+    "color": "#dc2626",
+    "audio": {
+      "name": "Mailbox",
+      "level1": "Mailbox!",
+      "level2": "Red Mailbox!",
+      "level3": "Send a letter in the red mailbox!"
+    },
+    "learning": {
+      "english": true,
+      "color": "red",
+      "categories": ["english", "color_shape"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "bench",
+    "type": "town_object",
+    "name": { "en": "Bench", "ja": "ベンチ" },
+    "icon": "🪑",
+    "color": "#a16207",
+    "audio": {
+      "name": "Bench",
+      "level1": "Bench!",
+      "level2": "Park Bench!",
+      "level3": "Sit and rest on the park bench!"
+    },
+    "learning": {
+      "english": true,
+      "color": "brown",
+      "categories": ["english", "spatial"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "fountain",
+    "type": "town_object",
+    "name": { "en": "Fountain", "ja": "ふんすい" },
+    "icon": "⛲",
+    "color": "#38bdf8",
+    "audio": {
+      "name": "Fountain",
+      "level1": "Fountain!",
+      "level2": "Water Fountain!",
+      "level3": "Sparkling water splashes in the fountain!"
+    },
+    "learning": {
+      "english": true,
+      "color": "blue",
+      "categories": ["english", "science"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "clock_tower",
+    "type": "town_object",
+    "name": { "en": "Clock", "ja": "とけい" },
+    "icon": "🕰️",
+    "color": "#fbbf24",
+    "audio": {
+      "name": "Clock",
+      "level1": "Clock!",
+      "level2": "Big Clock! Tick Tock!",
+      "level3": "The big town clock goes tick tock!"
+    },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "categories": ["english", "math"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "street_lamp",
+    "type": "town_object",
+    "name": { "en": "Street Lamp", "ja": "がいとう" },
+    "icon": "💡",
+    "color": "#fef08a",
+    "audio": {
+      "name": "Street Lamp",
+      "level1": "Lamp!",
+      "level2": "Bright Street Lamp!",
+      "level3": "The street lamp lights up the town!"
+    },
+    "learning": {
+      "english": true,
+      "color": "yellow",
+      "categories": ["english", "science"]
+    },
+    "interactions": ["observe"]
+  },
+  {
+    "id": "travel_gate",
+    "type": "portal",
+    "name": { "en": "Travel Gate", "ja": "ワープゲート（ステージ移動）" },
+    "icon": "🌀",
+    "color": "#8b5cf6",
+    "audio": {
+      "name": "Travel Gate",
+      "level1": "Go!",
+      "level2": "Travel Gate!",
+      "level3": "Click the gate to travel between the Island and Town!"
+    },
+    "learning": {
+      "english": true,
+      "color": "purple",
+      "categories": ["english", "spatial"]
+    },
+    "interactions": ["observe", "travel"]
   }
 ]

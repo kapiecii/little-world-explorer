@@ -14,6 +14,7 @@ export class UIManager {
     onStartNewGame,
     onContinueGame,
     onResetWorldObjects,
+    onSwitchStage,
     onExportSave,
     onImportSave,
     onUIModalStateChange
@@ -23,6 +24,7 @@ export class UIManager {
     this.onStartNewGame = onStartNewGame;
     this.onContinueGame = onContinueGame;
     this.onResetWorldObjects = onResetWorldObjects;
+    this.onSwitchStage = onSwitchStage;
     this.onExportSave = onExportSave;
     this.onImportSave = onImportSave;
     this.onUIModalStateChange = onUIModalStateChange;
@@ -54,7 +56,9 @@ export class UIManager {
     this.btnExportSave = document.getElementById('export-save-btn');
     this.btnImportSave = document.getElementById('import-save-btn');
     this.importSaveFileInput = document.getElementById('import-save-file-input');
+    this.btnSwitchStage = document.getElementById('switch-stage-btn');
     this.btnQuickLang = document.getElementById('quick-lang-btn');
+    this.currentStageId = 'island';
 
     this.btnOpenMissions = document.getElementById('open-missions-btn');
     this.btnOpenWordBook = document.getElementById('open-wordbook-btn');
@@ -153,11 +157,16 @@ export class UIManager {
       }, 2200);
     });
 
+    this.btnSwitchStage?.addEventListener('click', () => {
+      if (this.onSwitchStage) this.onSwitchStage();
+    });
+
     this.btnQuickLang?.addEventListener('click', () => {
       const current = this.settingsUI.getSettings().language;
       const next = current === 'en' ? 'ja' : 'en';
       this.settingsUI.updateSetting({ language: next });
       this._updateQuickLangLabel(next);
+      this.updateStageButton(this.currentStageId);
     });
 
     this.btnOpenMissions?.addEventListener('click', () => {
@@ -196,6 +205,17 @@ export class UIManager {
   _updateQuickLangLabel(lang) {
     if (!this.btnQuickLang) return;
     this.btnQuickLang.textContent = lang === 'ja' ? '🌐 EN / 日本語' : '🌐 English Only';
+  }
+
+  updateStageButton(stageId = 'island') {
+    this.currentStageId = stageId === 'town' ? 'town' : 'island';
+    if (!this.btnSwitchStage) return;
+    const isJa = this.settingsUI?.getSettings()?.language === 'ja';
+    if (this.currentStageId === 'town') {
+      this.btnSwitchStage.textContent = isJa ? '🏝️ Go to Island (島へ)' : '🏝️ Go to Island';
+    } else {
+      this.btnSwitchStage.textContent = isJa ? '🏙️ Go to Town (街へ)' : '🏙️ Go to Town';
+    }
   }
 
   async refreshContinueButton() {

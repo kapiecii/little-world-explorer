@@ -119,6 +119,7 @@ export class GameController {
       onStartNewGame: () => this.startNewGame(),
       onContinueGame: () => this.continueGame(),
       onResetWorldObjects: () => this.resetWorldObjects(),
+      onSwitchStage: () => this.toggleStage(),
       onExportSave: () => this.exportSaveFile(),
       onImportSave: (jsonText) => this.importSaveFile(jsonText),
       onUIModalStateChange: (gameplayActive) => this._setGameplayActive(gameplayActive)
@@ -128,6 +129,9 @@ export class GameController {
     this.saveManager.setStateProvider(() => this.getFullSaveState());
     this.eventBus.on(LearningEvents.SAVE_REQUESTED, () => {
       this.saveManager.requestSaveDebounced(500);
+    });
+    this.eventBus.on(LearningEvents.STAGE_SWITCH_REQUESTED, () => {
+      this.toggleStage();
     });
 
     await this.uiManager.refreshContinueButton();
@@ -192,8 +196,9 @@ export class GameController {
     await this.saveManager.clearSave();
 
     this.inventoryManager.resetToInitial();
-    this.worldManager.buildNewWorld();
+    this.worldManager.buildNewWorld('island');
     this.playerController.resetPosition(Config.PLAYER.START_POS);
+    this.uiManager.updateStageButton('island');
     this.learningManager.restoreState({
       discoveredWords: [],
       wordCounts: {},
@@ -223,6 +228,7 @@ export class GameController {
 
     if (saved.world) {
       this.worldManager.restoreWorld(saved.world);
+      this.uiManager.updateStageButton(this.worldManager.currentStageId);
     }
     if (saved.player?.inventory) {
       this.inventoryManager.restoreState(saved.player.inventory);
@@ -241,6 +247,34 @@ export class GameController {
       priority: AudioPriority.HIGH,
       force: true
     });
+  }
+
+  async toggleStage() {
+    if (!this.worldManager) return 'island';
+    const nextStage = this.worldManager.currentStageId === 'town' ? 'island' : 'town';
+    return this.switchStage(nextStage);
+  }
+
+  async switchStage(targetStageId) {
+    if (!this.worldManager) return 'island';
+    this.audioManager.unlockAudio();
+    const stageId = this.worldManager.switchStage(targetStageId);
+    this.playerController.resetPosition(Config.PLAYER.START_POS);
+    this.uiManager.updateStageButton(stageId);
+
+    this.eventBus.emit(LearningEvents.STAGE_CHANGED, { stageId });
+    await this.saveManager.triggerSave('switch_stage');
+
+    const welcomeText = stageId === 'town'
+      ? 'Welcome to Sunny Town! Look at the cars, bakery, and park!'
+      : 'Welcome back to Nature Island!';
+    this.eventBus.emit(LearningEvents.SFX_REQUESTED, { type: 'collect' });
+    this.eventBus.emit(LearningEvents.SPEAK_REQUESTED, {
+      text: welcomeText,
+      priority: AudioPriority.HIGH,
+      force: true
+    });
+    return stageId;
   }
 
   async resetWorldObjects() {
@@ -294,6 +328,7 @@ export class GameController {
 
     if (saved.world) {
       this.worldManager.restoreWorld(saved.world);
+      this.uiManager.updateStageButton(this.worldManager.currentStageId);
     }
     if (saved.player?.inventory) {
       this.inventoryManager.restoreState(saved.player.inventory);

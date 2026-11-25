@@ -89,9 +89,11 @@ export class SaveManager {
       version: Config.VERSION,
       world: {
         id: this.saveKey,
+        currentStageId: stateData.world?.currentStageId || 'island',
         blocks: stateData.world?.blocks || [],
         farmPlots: stateData.world?.farmPlots || [],
         collectedObjectIds: stateData.world?.collectedObjectIds || [],
+        stages: stateData.world?.stages || {},
         createdAt: stateData.world?.createdAt || now,
         updatedAt: now
       },

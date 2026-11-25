@@ -80,6 +80,7 @@ export class ObjectManager {
         state: 'Idle',
         mesh,
         growthStage: stage,
+        signalState: item.signalState !== undefined ? item.signalState : 0,
         growthTimer: 0,
         bounceTimer: 0,
         animPhase: Math.random() * Math.PI * 2
@@ -213,6 +214,221 @@ export class ObjectManager {
         leg.position.set(lx, 0.4, lz);
         root.add(leg);
       }
+    } else if (id === 'car') {
+      const body = new THREE.Mesh(
+        new THREE.BoxGeometry(1.3, 0.5, 2.1),
+        new THREE.MeshLambertMaterial({ color: 0xef4444 })
+      );
+      body.position.y = 0.45;
+      const cabin = new THREE.Mesh(
+        new THREE.BoxGeometry(1.1, 0.45, 1.0),
+        new THREE.MeshLambertMaterial({ color: 0xbae6fd })
+      );
+      cabin.position.set(0, 0.9, -0.1);
+      const wheelMat = new THREE.MeshLambertMaterial({ color: 0x1e293b });
+      for (const [wx, wz] of [[-0.65, -0.65], [0.65, -0.65], [-0.65, 0.65], [0.65, 0.65]]) {
+        const w = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.4, 0.4), wheelMat);
+        w.position.set(wx, 0.2, wz);
+        root.add(w);
+      }
+      root.add(body, cabin);
+    } else if (id === 'bus') {
+      const body = new THREE.Mesh(
+        new THREE.BoxGeometry(1.5, 1.2, 3.0),
+        new THREE.MeshLambertMaterial({ color: 0xfacc15 })
+      );
+      body.position.y = 0.85;
+      const windowBand = new THREE.Mesh(
+        new THREE.BoxGeometry(1.54, 0.4, 2.4),
+        new THREE.MeshLambertMaterial({ color: 0x38bdf8 })
+      );
+      windowBand.position.y = 1.05;
+      const wheelMat = new THREE.MeshLambertMaterial({ color: 0x1e293b });
+      for (const [wx, wz] of [[-0.75, -0.95], [0.75, -0.95], [-0.75, 0.95], [0.75, 0.95]]) {
+        const w = new THREE.Mesh(new THREE.BoxGeometry(0.24, 0.45, 0.45), wheelMat);
+        w.position.set(wx, 0.24, wz);
+        root.add(w);
+      }
+      root.add(body, windowBand);
+    } else if (id === 'bicycle') {
+      const wheelMat = new THREE.MeshLambertMaterial({ color: 0x1e293b });
+      const w1 = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.1, 12), wheelMat);
+      w1.rotation.z = Math.PI / 2;
+      w1.position.set(0, 0.3, -0.42);
+      const w2 = new THREE.Mesh(new THREE.CylinderGeometry(0.28, 0.28, 0.1, 12), wheelMat);
+      w2.rotation.z = Math.PI / 2;
+      w2.position.set(0, 0.3, 0.42);
+      const frame = new THREE.Mesh(
+        new THREE.BoxGeometry(0.14, 0.4, 0.9),
+        new THREE.MeshLambertMaterial({ color: 0x3b82f6 })
+      );
+      frame.position.set(0, 0.55, 0);
+      const handle = new THREE.Mesh(
+        new THREE.BoxGeometry(0.6, 0.08, 0.08),
+        new THREE.MeshLambertMaterial({ color: 0x94a3b8 })
+      );
+      handle.position.set(0, 0.88, 0.35);
+      root.add(w1, w2, frame, handle);
+    } else if (id === 'traffic_light') {
+      const pole = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.1, 0.12, 2.2, 8),
+        new THREE.MeshLambertMaterial({ color: 0x475569 })
+      );
+      pole.position.y = 1.1;
+      const box = new THREE.Mesh(
+        new THREE.BoxGeometry(0.45, 1.15, 0.45),
+        new THREE.MeshLambertMaterial({ color: 0x1e293b })
+      );
+      box.position.y = 2.5;
+      const redLamp = new THREE.Mesh(
+        new THREE.SphereGeometry(0.14, 10, 10),
+        new THREE.MeshBasicMaterial({ color: 0xef4444 })
+      );
+      redLamp.name = 'SignalRed';
+      redLamp.position.set(0, 2.82, 0.22);
+      const yellowLamp = new THREE.Mesh(
+        new THREE.SphereGeometry(0.14, 10, 10),
+        new THREE.MeshBasicMaterial({ color: 0x713f12 })
+      );
+      yellowLamp.name = 'SignalYellow';
+      yellowLamp.position.set(0, 2.5, 0.22);
+      const greenLamp = new THREE.Mesh(
+        new THREE.SphereGeometry(0.14, 10, 10),
+        new THREE.MeshBasicMaterial({ color: 0x14532d })
+      );
+      greenLamp.name = 'SignalGreen';
+      greenLamp.position.set(0, 2.18, 0.22);
+      root.add(pole, box, redLamp, yellowLamp, greenLamp);
+    } else if (id === 'bread') {
+      const loaf = new THREE.Mesh(
+        new THREE.BoxGeometry(0.65, 0.32, 0.38),
+        new THREE.MeshLambertMaterial({ color: 0xd97706 })
+      );
+      loaf.position.y = 0.22;
+      root.add(loaf);
+    } else if (id === 'ice_cream') {
+      const cone = new THREE.Mesh(
+        new THREE.ConeGeometry(0.22, 0.48, 10),
+        new THREE.MeshLambertMaterial({ color: 0xf59e0b })
+      );
+      cone.rotation.x = Math.PI;
+      cone.position.y = 0.26;
+      const scoop = new THREE.Mesh(
+        new THREE.SphereGeometry(0.25, 12, 12),
+        new THREE.MeshLambertMaterial({ color: 0xf472b6 })
+      );
+      scoop.position.y = 0.58;
+      root.add(cone, scoop);
+    } else if (id === 'book') {
+      const cover = new THREE.Mesh(
+        new THREE.BoxGeometry(0.48, 0.14, 0.6),
+        new THREE.MeshLambertMaterial({ color: 0x2563eb })
+      );
+      cover.position.y = 0.16;
+      const pages = new THREE.Mesh(
+        new THREE.BoxGeometry(0.42, 0.1, 0.54),
+        new THREE.MeshLambertMaterial({ color: 0xf8fafc })
+      );
+      pages.position.set(0.04, 0.16, 0);
+      root.add(cover, pages);
+    } else if (id === 'mailbox') {
+      const post = new THREE.Mesh(
+        new THREE.BoxGeometry(0.2, 0.9, 0.2),
+        new THREE.MeshLambertMaterial({ color: 0x475569 })
+      );
+      post.position.y = 0.45;
+      const box = new THREE.Mesh(
+        new THREE.BoxGeometry(0.55, 0.55, 0.5),
+        new THREE.MeshLambertMaterial({ color: 0xdc2626 })
+      );
+      box.position.y = 1.1;
+      root.add(post, box);
+    } else if (id === 'bench') {
+      const seat = new THREE.Mesh(
+        new THREE.BoxGeometry(1.5, 0.14, 0.55),
+        new THREE.MeshLambertMaterial({ color: 0xb45309 })
+      );
+      seat.position.y = 0.45;
+      const back = new THREE.Mesh(
+        new THREE.BoxGeometry(1.5, 0.45, 0.12),
+        new THREE.MeshLambertMaterial({ color: 0x92400e })
+      );
+      back.position.set(0, 0.72, -0.22);
+      const leg1 = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.42, 0.48), new THREE.MeshLambertMaterial({ color: 0x334155 }));
+      leg1.position.set(-0.6, 0.21, 0);
+      const leg2 = new THREE.Mesh(new THREE.BoxGeometry(0.14, 0.42, 0.48), new THREE.MeshLambertMaterial({ color: 0x334155 }));
+      leg2.position.set(0.6, 0.21, 0);
+      root.add(seat, back, leg1, leg2);
+    } else if (id === 'fountain') {
+      const basin = new THREE.Mesh(
+        new THREE.CylinderGeometry(1.25, 1.35, 0.5, 12),
+        new THREE.MeshLambertMaterial({ color: 0x94a3b8 })
+      );
+      basin.position.y = 0.25;
+      const pool = new THREE.Mesh(
+        new THREE.CylinderGeometry(1.05, 1.05, 0.12, 12),
+        new THREE.MeshLambertMaterial({ color: 0x38bdf8 })
+      );
+      pool.position.y = 0.48;
+      const jet = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.22, 0.32, 1.3, 10),
+        new THREE.MeshLambertMaterial({ color: 0x7dd3fc })
+      );
+      jet.position.y = 1.0;
+      root.add(basin, pool, jet);
+    } else if (id === 'clock_tower') {
+      const tower = new THREE.Mesh(
+        new THREE.BoxGeometry(1.2, 3.6, 1.2),
+        new THREE.MeshLambertMaterial({ color: 0xfef08a })
+      );
+      tower.position.y = 1.8;
+      const face = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.45, 0.45, 0.12, 16),
+        new THREE.MeshLambertMaterial({ color: 0xffffff })
+      );
+      face.rotation.x = Math.PI / 2;
+      face.position.set(0, 2.8, 0.62);
+      const roof = new THREE.Mesh(
+        new THREE.ConeGeometry(0.95, 1.0, 4),
+        new THREE.MeshLambertMaterial({ color: 0xd97706 })
+      );
+      roof.position.y = 4.1;
+      root.add(tower, face, roof);
+    } else if (id === 'street_lamp') {
+      const pole = new THREE.Mesh(
+        new THREE.CylinderGeometry(0.08, 0.12, 2.8, 8),
+        new THREE.MeshLambertMaterial({ color: 0x334155 })
+      );
+      pole.position.y = 1.4;
+      const bulb = new THREE.Mesh(
+        new THREE.SphereGeometry(0.28, 12, 12),
+        new THREE.MeshBasicMaterial({ color: 0xfef08a })
+      );
+      bulb.position.y = 2.9;
+      root.add(pole, bulb);
+    } else if (id === 'travel_gate') {
+      const pillarL = new THREE.Mesh(
+        new THREE.BoxGeometry(0.35, 2.4, 0.35),
+        new THREE.MeshLambertMaterial({ color: 0x7c3aed })
+      );
+      pillarL.position.set(-0.9, 1.2, 0);
+      const pillarR = new THREE.Mesh(
+        new THREE.BoxGeometry(0.35, 2.4, 0.35),
+        new THREE.MeshLambertMaterial({ color: 0x7c3aed })
+      );
+      pillarR.position.set(0.9, 1.2, 0);
+      const topBar = new THREE.Mesh(
+        new THREE.BoxGeometry(2.3, 0.4, 0.45),
+        new THREE.MeshLambertMaterial({ color: 0xfacc15 })
+      );
+      topBar.position.set(0, 2.5, 0);
+      const portalCore = new THREE.Mesh(
+        new THREE.OctahedronGeometry(0.55),
+        new THREE.MeshBasicMaterial({ color: 0x38bdf8, transparent: true, opacity: 0.85 })
+      );
+      portalCore.name = 'PortalCore';
+      portalCore.position.set(0, 1.25, 0);
+      root.add(pillarL, pillarR, topBar, portalCore);
     } else {
       const box = new THREE.Mesh(
         new THREE.OctahedronGeometry(0.4),
@@ -420,6 +636,40 @@ export class ObjectManager {
       return this._interactWithFarmPlot(inst);
     }
 
+    // 4. Interactive Traffic Light (Red=Stop -> Yellow=Wait -> Green=Go)
+    if (inst.id === 'traffic_light') {
+      inst.signalState = ((inst.signalState || 0) + 1) % 3;
+      const states = [
+        { name: 'red', word: 'Stop', speech: 'Red light! Stop!' },
+        { name: 'yellow', word: 'Wait', speech: 'Yellow light! Wait!' },
+        { name: 'green', word: 'Go', speech: 'Green light! Go!' }
+      ];
+      const current = states[inst.signalState];
+      const redMesh = inst.mesh.getObjectByName('SignalRed');
+      const yellowMesh = inst.mesh.getObjectByName('SignalYellow');
+      const greenMesh = inst.mesh.getObjectByName('SignalGreen');
+      if (redMesh?.material?.color?.setHex) redMesh.material.color.setHex(inst.signalState === 0 ? 0xef4444 : 0x450a0a);
+      if (yellowMesh?.material?.color?.setHex) yellowMesh.material.color.setHex(inst.signalState === 1 ? 0xfacc15 : 0x422006);
+      if (greenMesh?.material?.color?.setHex) greenMesh.material.color.setHex(inst.signalState === 2 ? 0x22c55e : 0x052e16);
+
+      if (this.eventBus) {
+        this.eventBus.emit(LearningEvents.TRAFFIC_LIGHT_CHANGED, {
+          uid: inst.uid,
+          signalState: inst.signalState,
+          ...current
+        });
+      }
+      return { action: 'traffic_light', signalState: inst.signalState };
+    }
+
+    // 5. Magic Travel Gate (switches between Nature Island and Sunny Town)
+    if (inst.id === 'travel_gate') {
+      if (this.eventBus) {
+        this.eventBus.emit(LearningEvents.STAGE_SWITCH_REQUESTED, { uid: inst.uid });
+      }
+      return { action: 'travel' };
+    }
+
     return { action: 'observed', id: inst.id };
   }
 
@@ -503,8 +753,14 @@ export class ObjectManager {
           inst.mesh.position.y = inst.baseY + Math.abs(Math.sin(inst.animPhase)) * 0.06;
           inst.mesh.rotation.y = Math.sin(inst.animPhase * 0.35) * 0.35;
         }
-      } else if (inst.id === 'apple' || inst.id === 'seed_item' || inst.id.startsWith('shape_')) {
+      } else if (['apple', 'seed_item', 'bread', 'ice_cream', 'book'].includes(inst.id) || inst.id.startsWith('shape_')) {
         inst.mesh.rotation.y += dt * 0.6;
+      } else if (inst.id === 'travel_gate') {
+        const core = inst.mesh.getObjectByName('PortalCore');
+        if (core) {
+          core.rotation.y += dt * 1.8;
+          core.position.y = 1.25 + Math.sin(inst.animPhase) * 0.14;
+        }
       }
 
       // Automatic gentle plant growth over time once a seed is planted

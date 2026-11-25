@@ -3,6 +3,7 @@ import { AudioPriority } from '../audio/AudioManager.js';
 
 const MISSION_CATEGORIES = [
   { id: 'all', icon: '🌟', en: 'All', ja: 'すべて' },
+  { id: 'town', icon: '🏙️', en: 'Town', ja: '街ステージ' },
   { id: 'english', icon: '🗣️', en: 'English', ja: '英語' },
   { id: 'color_shape', icon: '🎨', en: 'Color & Shape', ja: '色・形' },
   { id: 'math', icon: '🔢', en: 'Math', ja: '算数' },
@@ -185,7 +186,9 @@ export class MissionUI {
     for (const cat of MISSION_CATEGORIES) {
       const catMissions = cat.id === 'all'
         ? allMissions
-        : allMissions.filter(m => m.category === cat.id);
+        : cat.id === 'town'
+          ? allMissions.filter(m => m.stage === 'town')
+          : allMissions.filter(m => m.category === cat.id);
       const completedCount = catMissions.filter(m => m.completed).length;
 
       const pill = document.createElement('button');
@@ -208,7 +211,9 @@ export class MissionUI {
     const allMissions = this.missionManager.getAllMissions();
     const missions = this.selectedCategory === 'all'
       ? allMissions
-      : allMissions.filter(m => m.category === this.selectedCategory);
+      : this.selectedCategory === 'town'
+        ? allMissions.filter(m => m.stage === 'town')
+        : allMissions.filter(m => m.category === this.selectedCategory);
     this.missionListContainer.innerHTML = '';
 
     for (const m of missions) {

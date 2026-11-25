@@ -68,6 +68,9 @@ export class LearningManager {
       if (id.startsWith('shape_')) {
         this.missionManager.recordAction('select_shape', 'any', 1);
       }
+      if (['car', 'bus', 'bicycle'].includes(id)) {
+        this.missionManager.recordAction('select_vehicle', 'any', 1);
+      }
     });
 
     // 3. Player jumped & ran
@@ -117,7 +120,7 @@ export class LearningManager {
     });
 
     // 5. Block placed & stacked
-    this.eventBus.on(LearningEvents.BLOCK_PLACED, ({ blockId, stackHeight, spatialRelation, isRiverBridge, isAnimalArea, isFarmArea, isBuildingArea }) => {
+    this.eventBus.on(LearningEvents.BLOCK_PLACED, ({ blockId, stackHeight, spatialRelation, isRiverBridge, isAnimalArea, isFarmArea, isBuildingArea, stageId }) => {
       this.vocabularyManager.markDiscovered(blockId);
       this.eventBus.emit(LearningEvents.SFX_REQUESTED, { type: 'place' });
       this.missionManager.recordAction('place', blockId, 1);
@@ -139,6 +142,9 @@ export class LearningManager {
       }
       if (isBuildingArea) {
         this.missionManager.recordAction('build_plaza', 'building_area', 1);
+      }
+      if (stageId === 'town') {
+        this.missionManager.recordAction('build_town', 'town', 1);
       }
       if (stackHeight >= 2) {
         this.missionManager.recordAction('stack', 'any', stackHeight, true);
@@ -221,7 +227,28 @@ export class LearningManager {
       this.missionManager.recordAction('grow', wordId, 1);
     });
 
-    // 8. Mission started / completed
+    // 8. Town Traffic Light & Stage Travel
+    this.eventBus.on(LearningEvents.TRAFFIC_LIGHT_CHANGED, ({ word, speech }) => {
+      const wordId = word === 'Stop' ? 'stop' : word === 'Go' ? 'go' : 'traffic_light';
+      this.vocabularyManager.markDiscovered(wordId);
+      this._emitBanner(wordId, { customSub: speech });
+      this.eventBus.emit(LearningEvents.SFX_REQUESTED, { type: 'select' });
+      this.eventBus.emit(LearningEvents.SPEAK_REQUESTED, {
+        text: speech || 'Traffic light!',
+        priority: AudioPriority.HIGH,
+        force: true
+      });
+      this.missionManager.recordAction('traffic_light', 'any', 1);
+    });
+
+    this.eventBus.on(LearningEvents.STAGE_CHANGED, ({ stageId }) => {
+      if (!stageId) return;
+      this.vocabularyManager.markDiscovered(stageId);
+      this._emitBanner(stageId);
+      this.missionManager.recordAction('visit_stage', stageId, 1);
+    });
+
+    // 9. Mission started / completed
     this.eventBus.on(LearningEvents.MISSION_STARTED, (mission) => {
       if (mission && mission.audio) {
         this.eventBus.emit(LearningEvents.SPEAK_REQUESTED, {

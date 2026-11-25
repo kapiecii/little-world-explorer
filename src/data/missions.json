@@ -1468,5 +1468,335 @@
       "type": "decoration",
       "itemId": "star"
     }
+  },
+  {
+    "id": "town_visit_001",
+    "category": "spatial",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🏙️",
+    "instruction": {
+      "en": "Visit Sunny Town!",
+      "ja": "街のステージ（Sunny Town）へ行ってみよう！"
+    },
+    "audio": "Let us visit Sunny Town!",
+    "objective": {
+      "type": "visit_stage",
+      "target": "town",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_car_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🚗",
+    "instruction": {
+      "en": "Town: Find a red car!",
+      "ja": "【街】赤い車（Car）を見つけよう！"
+    },
+    "audio": "Find a red car in town!",
+    "objective": {
+      "type": "select",
+      "target": "car",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_bus_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🚌",
+    "instruction": {
+      "en": "Town: Find a yellow bus!",
+      "ja": "【街】黄色いバス（Bus）を見つけよう！"
+    },
+    "audio": "Find a yellow bus in town!",
+    "objective": {
+      "type": "select",
+      "target": "bus",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_bicycle_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🚲",
+    "instruction": {
+      "en": "Town: Find a blue bicycle!",
+      "ja": "【街】青い自転車（Bicycle）を見つけよう！"
+    },
+    "audio": "Find a blue bicycle in town!",
+    "objective": {
+      "type": "select",
+      "target": "bicycle",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_traffic_light_001",
+    "category": "logic",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🚦",
+    "instruction": {
+      "en": "Town: Change the traffic light 3 times!",
+      "ja": "【街】信号機を3回クリックしてStopとGoを学ぼう！"
+    },
+    "audio": "Click the traffic light three times! Stop and go!",
+    "objective": {
+      "type": "traffic_light",
+      "target": "any",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_collect_bread_001",
+    "category": "math",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🥖",
+    "instruction": {
+      "en": "Town: Collect 3 loaves of bread!",
+      "ja": "【街】パン屋さんでパン（Bread）を3個集めよう！"
+    },
+    "audio": "Collect three loaves of bread at the bakery!",
+    "objective": {
+      "type": "collect",
+      "target": "bread",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_collect_ice_cream_001",
+    "category": "math",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🍦",
+    "instruction": {
+      "en": "Town: Collect 3 ice creams!",
+      "ja": "【街】公園でアイスクリームを3個集めよう！"
+    },
+    "audio": "Collect three ice creams in the park!",
+    "objective": {
+      "type": "collect",
+      "target": "ice_cream",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_collect_books_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "📚",
+    "instruction": {
+      "en": "Town: Collect 3 books at school!",
+      "ja": "【街】学校の前で本（Book）を3冊集めよう！"
+    },
+    "audio": "Collect three books at the school!",
+    "objective": {
+      "type": "collect",
+      "target": "book",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_mailbox_001",
+    "category": "color_shape",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "📮",
+    "instruction": {
+      "en": "Town: Find a red mailbox!",
+      "ja": "【街】赤い郵便ポスト（Mailbox）を見つけよう！"
+    },
+    "audio": "Find a red mailbox in town!",
+    "objective": {
+      "type": "select",
+      "target": "mailbox",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_fountain_001",
+    "category": "science",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "⛲",
+    "instruction": {
+      "en": "Town: Find the park fountain!",
+      "ja": "【街】公園の噴水（Fountain）を見つけよう！"
+    },
+    "audio": "Find the sparkling fountain in the park!",
+    "objective": {
+      "type": "select",
+      "target": "fountain",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_clock_001",
+    "category": "math",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🕰️",
+    "instruction": {
+      "en": "Town: Find the big clock tower!",
+      "ja": "【街】大きな時計塔（Clock）を見つけよう！"
+    },
+    "audio": "Find the big clock in town!",
+    "objective": {
+      "type": "select",
+      "target": "clock_tower",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_bench_001",
+    "category": "spatial",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🪑",
+    "instruction": {
+      "en": "Town: Find a park bench!",
+      "ja": "【街】公園のベンチ（Bench）を見つけよう！"
+    },
+    "audio": "Find a bench in the park!",
+    "objective": {
+      "type": "select",
+      "target": "bench",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_vehicles_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🚙",
+    "instruction": {
+      "en": "Town: Find 3 vehicles!",
+      "ja": "【街】乗り物（車・バス・自転車）を3回見つけよう！"
+    },
+    "audio": "Find three vehicles in town!",
+    "objective": {
+      "type": "select_vehicle",
+      "target": "any",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_build_shop_001",
+    "category": "logic",
+    "stage": "town",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🏪",
+    "instruction": {
+      "en": "Town: Build 5 blocks in Sunny Town!",
+      "ja": "【街】街のステージでブロックを5個配置しよう！"
+    },
+    "audio": "Build five blocks in Sunny Town!",
+    "objective": {
+      "type": "build_town",
+      "target": "town",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_return_island_001",
+    "category": "spatial",
+    "stage": "island",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🏝️",
+    "instruction": {
+      "en": "Travel back to Nature Island!",
+      "ja": "自然の島（Nature Island）へ戻ろう！"
+    },
+    "audio": "Travel back to Nature Island!",
+    "objective": {
+      "type": "visit_stage",
+      "target": "island",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
   }
 ]
