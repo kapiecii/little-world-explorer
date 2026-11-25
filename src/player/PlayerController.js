@@ -32,6 +32,7 @@ export class PlayerController {
 
     this.controlsEnabled = true;
     this.runTimer = 0;
+    this.walkTimer = 0;
     this._bindKeyboard();
     this.resetPosition(Config.PLAYER.START_POS);
   }
@@ -180,6 +181,7 @@ export class PlayerController {
     }
 
     if (isMoving && this.keys.sprint) {
+      this.walkTimer = 0;
       if (this.onGround) {
         this.runTimer += safeDt;
         while (this.runTimer >= 1.0) {
@@ -191,8 +193,22 @@ export class PlayerController {
           }
         }
       }
+    } else if (isMoving) {
+      this.runTimer = 0;
+      if (this.onGround) {
+        this.walkTimer += safeDt;
+        while (this.walkTimer >= 1.0) {
+          this.walkTimer -= 1.0;
+          if (this.eventBus) {
+            this.eventBus.emit(LearningEvents.PLAYER_WALKED, {
+              position: this.getPositionArray()
+            });
+          }
+        }
+      }
     } else {
       this.runTimer = 0;
+      this.walkTimer = 0;
     }
 
     this.animation.update(safeDt, animState);

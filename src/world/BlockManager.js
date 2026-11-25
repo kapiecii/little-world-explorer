@@ -143,6 +143,8 @@ export class BlockManager {
     }
 
     const isAnimalArea = bx >= 36 && bz >= 32;
+    const isFarmArea = bx >= 36 && bz <= 25;
+    const isBuildingArea = bx <= 26 && bz >= 32;
 
     if (this.eventBus) {
       this.eventBus.emit(LearningEvents.BLOCK_PLACED, {
@@ -151,7 +153,9 @@ export class BlockManager {
         stackHeight,
         spatialRelation,
         isRiverBridge: Boolean(wasRiverWater && by <= 3),
-        isAnimalArea
+        isAnimalArea,
+        isFarmArea,
+        isBuildingArea
       });
     }
 

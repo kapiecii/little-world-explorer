@@ -89,6 +89,33 @@ export async function runLearningTests(assert) {
       audio: 'Grow a flower to full bloom!',
       objective: { type: 'grow', target: 'flower', count: 1 },
       reward: { type: 'decoration', itemId: 'star' }
+    },
+    {
+      id: 'walk_explore_001',
+      category: 'english',
+      difficulty: 1,
+      instruction: { en: 'Walk around the island!', ja: '島の中を5秒お散歩しよう！' },
+      audio: 'Walk around the island!',
+      objective: { type: 'walk', target: 'any', count: 5 },
+      reward: { type: 'decoration', itemId: 'star' }
+    },
+    {
+      id: 'build_farm_border_001',
+      category: 'logic',
+      difficulty: 2,
+      instruction: { en: 'Build a border in the farm!', ja: '農場エリアにブロックを4個置こう！' },
+      audio: 'Build a border in the farm!',
+      objective: { type: 'build_farm', target: 'farm_area', count: 4 },
+      reward: { type: 'decoration', itemId: 'star' }
+    },
+    {
+      id: 'build_in_plaza_001',
+      category: 'spatial',
+      difficulty: 2,
+      instruction: { en: 'Build 5 blocks in the plaza!', ja: '建築エリアにブロックを5個置こう！' },
+      audio: 'Build five blocks in the plaza!',
+      objective: { type: 'build_plaza', target: 'building_area', count: 5 },
+      reward: { type: 'decoration', itemId: 'star' }
     }
   ];
 
@@ -173,4 +200,26 @@ export async function runLearningTests(assert) {
   assert(!missions.completedMissions.has('bloom_flower_001'), 'Sprout stage should not complete flower bloom mission');
   bus.emit(LearningEvents.PLANT_GROWN, { stageName: 'Flower' });
   assert(missions.completedMissions.has('bloom_flower_001'), 'Flower stage should complete bloom_flower_001');
+
+  // Test 10: Walking completes walk_explore_001 and discovers "walk"
+  missions.startMission('walk_explore_001');
+  for (let i = 0; i < 5; i++) {
+    bus.emit(LearningEvents.PLAYER_WALKED, { position: [20 + i, 3, 20] });
+  }
+  assert(missions.completedMissions.has('walk_explore_001'), 'Walking 5 seconds should complete walk_explore_001');
+  assert(vocab.isDiscovered('walk'), 'Walking should mark "walk" as discovered');
+
+  // Test 11: Placing blocks in farm area completes build_farm_border_001
+  missions.startMission('build_farm_border_001');
+  for (let i = 0; i < 4; i++) {
+    bus.emit(LearningEvents.BLOCK_PLACED, { blockId: 'wood', stackHeight: 1, isFarmArea: true });
+  }
+  assert(missions.completedMissions.has('build_farm_border_001'), 'Placing 4 blocks in farm area should complete build_farm_border_001');
+
+  // Test 12: Placing blocks in building plaza completes build_in_plaza_001
+  missions.startMission('build_in_plaza_001');
+  for (let i = 0; i < 5; i++) {
+    bus.emit(LearningEvents.BLOCK_PLACED, { blockId: 'stone', stackHeight: 1, isBuildingArea: true });
+  }
+  assert(missions.completedMissions.has('build_in_plaza_001'), 'Placing 5 blocks in building area should complete build_in_plaza_001');
 }

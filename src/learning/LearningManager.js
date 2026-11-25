@@ -87,6 +87,11 @@ export class LearningManager {
       this.missionManager.recordAction('run', 'any', 1);
     });
 
+    this.eventBus.on(LearningEvents.PLAYER_WALKED, () => {
+      this.vocabularyManager.markDiscovered('walk');
+      this.missionManager.recordAction('walk', 'any', 1);
+    });
+
     // 4. Item collected
     this.eventBus.on(LearningEvents.ITEM_COLLECTED, ({ itemId, item }) => {
       if (!itemId) return;
@@ -112,7 +117,7 @@ export class LearningManager {
     });
 
     // 5. Block placed & stacked
-    this.eventBus.on(LearningEvents.BLOCK_PLACED, ({ blockId, stackHeight, spatialRelation, isRiverBridge, isAnimalArea }) => {
+    this.eventBus.on(LearningEvents.BLOCK_PLACED, ({ blockId, stackHeight, spatialRelation, isRiverBridge, isAnimalArea, isFarmArea, isBuildingArea }) => {
       this.vocabularyManager.markDiscovered(blockId);
       this.eventBus.emit(LearningEvents.SFX_REQUESTED, { type: 'place' });
       this.missionManager.recordAction('place', blockId, 1);
@@ -128,6 +133,12 @@ export class LearningManager {
       }
       if (isAnimalArea) {
         this.missionManager.recordAction('build_fence', 'animal_area', 1);
+      }
+      if (isFarmArea) {
+        this.missionManager.recordAction('build_farm', 'farm_area', 1);
+      }
+      if (isBuildingArea) {
+        this.missionManager.recordAction('build_plaza', 'building_area', 1);
       }
       if (stackHeight >= 2) {
         this.missionManager.recordAction('stack', 'any', stackHeight, true);
