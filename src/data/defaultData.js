@@ -3494,7 +3494,7 @@ export const DEFAULT_MISSIONS = [
   {
     "id": "town_visit_001",
     "category": "spatial",
-    "stage": "town",
+    "stage": "island",
     "difficulty": 1,
     "difficultyLabel": "Easy",
     "icon": "🏙️",
@@ -3802,7 +3802,7 @@ export const DEFAULT_MISSIONS = [
   {
     "id": "town_return_island_001",
     "category": "spatial",
-    "stage": "island",
+    "stage": "town",
     "difficulty": 1,
     "difficultyLabel": "Easy",
     "icon": "🏝️",

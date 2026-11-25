@@ -209,6 +209,9 @@ export class UIManager {
 
   updateStageButton(stageId = 'island') {
     this.currentStageId = stageId === 'town' ? 'town' : 'island';
+    if (this.missionUI && typeof this.missionUI.setCurrentStage === 'function') {
+      this.missionUI.setCurrentStage(this.currentStageId);
+    }
     if (!this.btnSwitchStage) return;
     const isJa = this.settingsUI?.getSettings()?.language === 'ja';
     if (this.currentStageId === 'town') {

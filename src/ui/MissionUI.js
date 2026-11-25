@@ -3,7 +3,6 @@ import { AudioPriority } from '../audio/AudioManager.js';
 
 const MISSION_CATEGORIES = [
   { id: 'all', icon: '🌟', en: 'All', ja: 'すべて' },
-  { id: 'town', icon: '🏙️', en: 'Town', ja: '街ステージ' },
   { id: 'english', icon: '🗣️', en: 'English', ja: '英語' },
   { id: 'color_shape', icon: '🎨', en: 'Color & Shape', ja: '色・形' },
   { id: 'math', icon: '🔢', en: 'Math', ja: '算数' },
@@ -20,6 +19,7 @@ export class MissionUI {
     this.language = settings.language || 'en';
     this.onRequestCloseModal = onRequestCloseModal;
     this.selectedCategory = 'all';
+    this.currentStageId = 'island';
 
     this.hudCardEl = document.getElementById('mission-hud-card');
     this.hudIconEl = document.getElementById('mission-hud-icon');
@@ -68,9 +68,9 @@ export class MissionUI {
         if (this.missionManager?.getActiveMission()) {
           this.missionManager.pauseMission();
         } else {
-          // Start first uncompleted mission or first mission
-          const all = this.missionManager.getAllMissions();
-          const next = all.find(m => !m.completed) || all[0];
+          // Start first uncompleted mission in the current stage
+          const stageMissions = this.getCurrentStageMissions();
+          const next = stageMissions.find(m => !m.completed) || stageMissions[0];
           if (next) this.missionManager.startMission(next.id, true);
         }
       });
@@ -110,6 +110,25 @@ export class MissionUI {
         this.renderModalContent();
       }
     });
+
+    this.eventBus.on(LearningEvents.STAGE_CHANGED, ({ stageId }) => {
+      if (stageId) {
+        this.setCurrentStage(stageId);
+      }
+    });
+  }
+
+  setCurrentStage(stageId = 'island') {
+    this.currentStageId = stageId === 'town' ? 'town' : 'island';
+    this.selectedCategory = 'all';
+    this.renderHudCard();
+    this.renderModalContent();
+  }
+
+  getCurrentStageMissions() {
+    if (!this.missionManager) return [];
+    const allMissions = this.missionManager.getAllMissions();
+    return allMissions.filter(m => (m.stage || 'island') === this.currentStageId);
   }
 
   switchTab(tab) {
@@ -180,15 +199,14 @@ export class MissionUI {
 
   renderCategoryFilters() {
     if (!this.filterBarEl || !this.missionManager) return;
-    const allMissions = this.missionManager.getAllMissions();
+    const stageMissions = this.getCurrentStageMissions();
     this.filterBarEl.innerHTML = '';
 
     for (const cat of MISSION_CATEGORIES) {
       const catMissions = cat.id === 'all'
-        ? allMissions
-        : cat.id === 'town'
-          ? allMissions.filter(m => m.stage === 'town')
-          : allMissions.filter(m => m.category === cat.id);
+        ? stageMissions
+        : stageMissions.filter(m => m.category === cat.id);
+      if (cat.id !== 'all' && catMissions.length === 0) continue;
       const completedCount = catMissions.filter(m => m.completed).length;
 
       const pill = document.createElement('button');
@@ -208,12 +226,10 @@ export class MissionUI {
     if (!this.missionListContainer || !this.missionManager) return;
     this.renderCategoryFilters();
 
-    const allMissions = this.missionManager.getAllMissions();
+    const stageMissions = this.getCurrentStageMissions();
     const missions = this.selectedCategory === 'all'
-      ? allMissions
-      : this.selectedCategory === 'town'
-        ? allMissions.filter(m => m.stage === 'town')
-        : allMissions.filter(m => m.category === this.selectedCategory);
+      ? stageMissions
+      : stageMissions.filter(m => m.category === this.selectedCategory);
     this.missionListContainer.innerHTML = '';
 
     for (const m of missions) {
