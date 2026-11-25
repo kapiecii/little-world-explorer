@@ -228,7 +228,7 @@ export class LearningManager {
     });
 
     // 8. Town Traffic Light & Stage Travel
-    this.eventBus.on(LearningEvents.TRAFFIC_LIGHT_CHANGED, ({ word, speech }) => {
+    this.eventBus.on(LearningEvents.TRAFFIC_LIGHT_CHANGED, ({ name, word, speech }) => {
       const wordId = word === 'Stop' ? 'stop' : word === 'Go' ? 'go' : 'traffic_light';
       this.vocabularyManager.markDiscovered(wordId);
       this._emitBanner(wordId, { customSub: speech });
@@ -238,7 +238,7 @@ export class LearningManager {
         priority: AudioPriority.HIGH,
         force: true
       });
-      this.missionManager.recordAction('traffic_light', 'any', 1);
+      this.missionManager.recordAction('traffic_light', name || 'any', 1);
     });
 
     this.eventBus.on(LearningEvents.STAGE_CHANGED, ({ stageId }) => {

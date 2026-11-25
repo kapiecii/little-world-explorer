@@ -1798,5 +1798,357 @@
       "type": "decoration",
       "itemId": "star"
     }
+  },
+  {
+    "id": "town_find_lamp_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "💡",
+    "instruction": {
+      "en": "Town: Find a bright street lamp!",
+      "ja": "【街】明るい街灯（Street Lamp）を見つけよう！"
+    },
+    "audio": "Find a bright street lamp in town!",
+    "objective": {
+      "type": "select",
+      "target": "street_lamp",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_walk_street_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🚶",
+    "instruction": {
+      "en": "Town: Walk along the street!",
+      "ja": "【街】街の通りを5秒お散歩しよう！"
+    },
+    "audio": "Walk along the street in Sunny Town!",
+    "objective": {
+      "type": "walk",
+      "target": "any",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_listen_eight_001",
+    "category": "english",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🎧",
+    "instruction": {
+      "en": "Town: Click and listen to 8 things!",
+      "ja": "【街】街のものを8回クリックして英語を聞こう！"
+    },
+    "audio": "Click and listen to eight things in town!",
+    "objective": {
+      "type": "select",
+      "target": "any",
+      "count": 8
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_crosswalk_001",
+    "category": "color_shape",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "⬜",
+    "instruction": {
+      "en": "Town: Find the white crosswalk!",
+      "ja": "【街】白い横断歩道（White Block）を見つけよう！"
+    },
+    "audio": "Find the white crosswalk on the road!",
+    "objective": {
+      "type": "select",
+      "target": "white",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_road_001",
+    "category": "color_shape",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🛣️",
+    "instruction": {
+      "en": "Town: Find the gray road!",
+      "ja": "【街】灰色の道路（Gray Block）を見つけよう！"
+    },
+    "audio": "Find the gray road in town!",
+    "objective": {
+      "type": "select",
+      "target": "gray",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_park_flowers_001",
+    "category": "color_shape",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🌹",
+    "instruction": {
+      "en": "Town: Find a red flower in the park!",
+      "ja": "【街】公園の赤い花を見つけよう！"
+    },
+    "audio": "Find a red flower in the town park!",
+    "objective": {
+      "type": "select",
+      "target": "flower_red",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_place_color_sign_001",
+    "category": "color_shape",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🎨",
+    "instruction": {
+      "en": "Town: Place 5 colorful blocks!",
+      "ja": "【街】カラフルな色ブロックを5個置こう！"
+    },
+    "audio": "Place five colorful blocks in town!",
+    "objective": {
+      "type": "place_color",
+      "target": "any",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_collect_four_bread_001",
+    "category": "math",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🥐",
+    "instruction": {
+      "en": "Town: Buy all 4 loaves of bread!",
+      "ja": "【街】パン屋さんのパンを4個ぜんぶ集めよう！"
+    },
+    "audio": "Buy all four loaves of bread at the bakery!",
+    "objective": {
+      "type": "collect",
+      "target": "bread",
+      "count": 4
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_collect_four_books_001",
+    "category": "math",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "📖",
+    "instruction": {
+      "en": "Town: Collect all 4 books!",
+      "ja": "【街】学校の本を4冊ぜんぶ集めよう！"
+    },
+    "audio": "Collect all four books at the school!",
+    "objective": {
+      "type": "collect",
+      "target": "book",
+      "count": 4
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_stack_tower_001",
+    "category": "math",
+    "stage": "town",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🏢",
+    "instruction": {
+      "en": "Town: Build a skyscraper 5 blocks high!",
+      "ja": "【街】5階建ての高いビルを積み上げよう！"
+    },
+    "audio": "Build a tall skyscraper five blocks high!",
+    "objective": {
+      "type": "stack",
+      "target": "any",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_glass_window_001",
+    "category": "science",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🪟",
+    "instruction": {
+      "en": "Town: Find a clear glass window!",
+      "ja": "【街】お店の透明なガラス窓（Glass）を見つけよう！"
+    },
+    "audio": "Find a clear glass window on a building!",
+    "objective": {
+      "type": "select",
+      "target": "glass",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_find_park_tree_001",
+    "category": "science",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🌳",
+    "instruction": {
+      "en": "Town: Find a tree in the town park!",
+      "ja": "【街】公園の木（Tree）を見つけよう！"
+    },
+    "audio": "Find a green tree in the town park!",
+    "objective": {
+      "type": "select",
+      "target": "tree",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_decorate_flowers_001",
+    "category": "spatial",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🌸",
+    "instruction": {
+      "en": "Town: Plant 3 flowers in the town park!",
+      "ja": "【街】街の公園に花を3つ飾ろう！"
+    },
+    "audio": "Plant three flowers in the town park!",
+    "objective": {
+      "type": "place",
+      "target": "flower",
+      "count": 3
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_jump_crosswalk_001",
+    "category": "spatial",
+    "stage": "town",
+    "difficulty": 1,
+    "difficultyLabel": "Easy",
+    "icon": "🦘",
+    "instruction": {
+      "en": "Town: Jump 5 times in town!",
+      "ja": "【街】街で5回ジャンプしよう！"
+    },
+    "audio": "Jump five times in Sunny Town!",
+    "objective": {
+      "type": "jump",
+      "target": "any",
+      "count": 5
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_signal_green_001",
+    "category": "logic",
+    "stage": "town",
+    "difficulty": 2,
+    "difficultyLabel": "Normal",
+    "icon": "🟢",
+    "instruction": {
+      "en": "Town: Turn the traffic light GREEN (Go)!",
+      "ja": "【街】信号機を緑（Go!）に変えよう！"
+    },
+    "audio": "Turn the traffic light green! Green means go!",
+    "objective": {
+      "type": "traffic_light",
+      "target": "green",
+      "count": 1
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
+  },
+  {
+    "id": "town_build_big_shop_001",
+    "category": "logic",
+    "stage": "town",
+    "difficulty": 3,
+    "difficultyLabel": "Challenge",
+    "icon": "🏬",
+    "instruction": {
+      "en": "Town: Build a big shop (10 blocks)!",
+      "ja": "【街】ブロックを10個置いて大きなお店を作ろう！"
+    },
+    "audio": "Build a big shop with ten blocks in Sunny Town!",
+    "objective": {
+      "type": "build_town",
+      "target": "town",
+      "count": 10
+    },
+    "reward": {
+      "type": "decoration",
+      "itemId": "star"
+    }
   }
 ]
