@@ -116,6 +116,15 @@ export async function runLearningTests(assert) {
       audio: 'Build five blocks in the plaza!',
       objective: { type: 'build_plaza', target: 'building_area', count: 5 },
       reward: { type: 'decoration', itemId: 'star' }
+    },
+    {
+      id: 'collect_mushrooms_001',
+      category: 'science',
+      difficulty: 2,
+      instruction: { en: 'Collect 3 mushrooms in the forest!', ja: '森でキノコを3個集めよう！' },
+      audio: 'Collect three mushrooms in the forest!',
+      objective: { type: 'collect', target: 'mushroom', count: 3 },
+      reward: { type: 'decoration', itemId: 'star' }
     }
   ];
 
@@ -222,4 +231,12 @@ export async function runLearningTests(assert) {
     bus.emit(LearningEvents.BLOCK_PLACED, { blockId: 'stone', stackHeight: 1, isBuildingArea: true });
   }
   assert(missions.completedMissions.has('build_in_plaza_001'), 'Placing 5 blocks in building area should complete build_in_plaza_001');
+
+  // Test 13: Collecting mushrooms when all 9 hotbar slots are full still counts and completes collect_mushrooms_001
+  missions.startMission('collect_mushrooms_001');
+  inv.addItem('mushroom', 1, { alwaysEmit: true });
+  inv.addItem('mushroom', 1, { alwaysEmit: true });
+  inv.addItem('mushroom', 1, { alwaysEmit: true });
+  assert(inv.getItemCount('mushroom') === 3, 'Mushroom count should reach 3 even when all 9 hotbar slots are occupied');
+  assert(missions.completedMissions.has('collect_mushrooms_001'), 'Collecting 3 mushrooms should complete collect_mushrooms_001');
 }

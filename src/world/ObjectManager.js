@@ -399,7 +399,7 @@ export class ObjectManager {
     if (inst.id === 'tree' && isHoldBreak) {
       const drop = inst.def.dropItem || 'wood';
       if (this.inventoryManager) {
-        this.inventoryManager.addItem(drop, 2);
+        this.inventoryManager.addItem(drop, 2, { alwaysEmit: true });
       }
       this._removeObjectInstance(uid, 'Destroyed');
       return { action: 'harvested', drop };
@@ -409,7 +409,7 @@ export class ObjectManager {
     if (interactions.includes('collect')) {
       const collectItemId = inst.def.collectId || inst.id;
       if (this.inventoryManager) {
-        this.inventoryManager.addItem(collectItemId, 1);
+        this.inventoryManager.addItem(collectItemId, 1, { alwaysEmit: true });
       }
       this._removeObjectInstance(uid, 'Collected');
       return { action: 'collected', itemId: collectItemId };

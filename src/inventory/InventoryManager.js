@@ -12,6 +12,7 @@ export class InventoryManager {
     this._buildItemCatalog(blockDefs, objectDefs);
 
     this.slots = new Array(this.maxSlots).fill(null);
+    this.extraItems = {};
     this.resetToInitial();
   }
 
@@ -49,6 +50,7 @@ export class InventoryManager {
 
   resetToInitial() {
     this.slots = new Array(this.maxSlots).fill(null);
+    this.extraItems = {};
     Config.INVENTORY.INITIAL_ITEMS.forEach((item, index) => {
       if (index < this.maxSlots) {
         this.slots[index] = {
@@ -79,11 +81,12 @@ export class InventoryManager {
     };
   }
 
-  addItem(itemId, count = 1) {
+  addItem(itemId, count = 1, options = {}) {
     if (!itemId || count <= 0) return 0;
 
     let remaining = count;
     const def = this.getItemDefinition(itemId);
+    const hasHotbarSlot = this.slots.some(slot => slot && slot.id === itemId);
 
     // 1. Stack onto existing slot with the same itemId
     for (let i = 0; i < this.maxSlots; i++) {
@@ -117,13 +120,24 @@ export class InventoryManager {
       }
     }
 
+    // 3. If all 9 hotbar slots are occupied by other items, store collected item in extraItems bag
+    if (remaining > 0 && !hasHotbarSlot) {
+      const currentExtra = this.extraItems[itemId] || 0;
+      const space = Math.max(0, this.maxStack - currentExtra);
+      const toAdd = Math.min(space, remaining);
+      if (toAdd > 0) {
+        this.extraItems[itemId] = currentExtra + toAdd;
+        remaining -= toAdd;
+      }
+    }
+
     const added = count - remaining;
-    if (added > 0) {
+    if (added > 0 || options.alwaysEmit) {
       const totalCount = this.getItemCount(itemId);
       if (this.eventBus) {
         this.eventBus.emit(LearningEvents.ITEM_COLLECTED, {
           itemId,
-          added,
+          added: added > 0 ? added : count,
           totalCount,
           item: def
         });
@@ -162,15 +176,25 @@ export class InventoryManager {
       }
     }
 
+    if (remaining > 0 && this.extraItems[itemId]) {
+      const take = Math.min(this.extraItems[itemId], remaining);
+      this.extraItems[itemId] -= take;
+      remaining -= take;
+      if (this.extraItems[itemId] <= 0) {
+        delete this.extraItems[itemId];
+      }
+    }
+
     this._notifyUpdate();
     return true;
   }
 
   getItemCount(itemId) {
-    return this.slots.reduce((sum, slot) => {
+    const hotbarCount = this.slots.reduce((sum, slot) => {
       if (slot && slot.id === itemId) return sum + slot.count;
       return sum;
     }, 0);
+    return hotbarCount + (this.extraItems[itemId] || 0);
   }
 
   selectSlot(index) {
@@ -201,12 +225,16 @@ export class InventoryManager {
   getSerializedState() {
     return {
       selectedSlot: this.selectedSlot,
-      slots: this.getSlots()
+      slots: this.getSlots(),
+      extraItems: { ...this.extraItems }
     };
   }
 
   restoreState(savedInventory) {
     if (!savedInventory) return;
+    this.extraItems = savedInventory.extraItems && typeof savedInventory.extraItems === 'object'
+      ? { ...savedInventory.extraItems }
+      : {};
     const rawSlots = Array.isArray(savedInventory) ? savedInventory : savedInventory.slots;
     if (Array.isArray(rawSlots)) {
       this.slots = new Array(this.maxSlots).fill(null);
